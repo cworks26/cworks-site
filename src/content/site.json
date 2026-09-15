@@ -1,0 +1,594 @@
+{
+  "brand": {
+    "name": "CWorks",
+    "legal": "CWorks Ltd",
+    "tagline": "We design, build, and ship digital products for Ugandan businesses.",
+    "location": "Kampala, Uganda",
+    "email": "info@cworks.com",
+    "phone": "+256 788 368 997",
+    "whatsapp": "https://wa.me/256788368997",
+    "domain": "cworksug.com",
+    "socials": {
+      "instagram": "https://www.instagram.com/elio.sha",
+      "linkedin": "https://www.linkedin.com/in/elisha-mukisa-5b5963402/"
+    }
+  },
+  "process": [
+    {
+      "n": "01",
+      "title": "Discovery Call",
+      "body": "We sit down with you, in person or virtually, to understand what you need. We talk through your goals, your audience, any sites you like the look of, and your budget. This gives us everything we need to put together a solid proposal."
+    },
+    {
+      "n": "02",
+      "title": "Proposal & Agreement",
+      "body": "We send you a clear breakdown of scope, cost, and timeline. Once you're happy, we agree on payment terms and get the project officially started. No hidden fees, no surprises."
+    },
+    {
+      "n": "03",
+      "title": "Design",
+      "body": "We build out the visual direction of your site (layout, colours, fonts, and structure). You review and give feedback, and we refine until you sign off. Nothing moves to code until the design is approved."
+    },
+    {
+      "n": "04",
+      "title": "Build",
+      "body": "With the design locked in, we build. We share progress along the way and give you a preview link before the final review so you can see exactly how it looks and feels."
+    },
+    {
+      "n": "05",
+      "title": "Review & Revisions",
+      "body": "You go through the built product and tell us what you'd like adjusted. We work through the agreed revision rounds until everything is exactly as it should be."
+    },
+    {
+      "n": "06",
+      "title": "Launch & Handover",
+      "body": "We deploy, set up the domain, and make sure everything is live and working. You get the full source code, a walkthrough, and a support window to handle anything post-launch."
+    }
+  ],
+  "services": [
+    {
+      "slug": "web-development",
+      "name": "Website Building",
+      "short": "End-to-end web development — from a blank page to a live, polished site.",
+      "included": [
+        {
+          "t": "Design",
+          "b": "We start with your goals, brand, and inspiration. From there we put together a visual layout (colours, typography, and structure) and share it with you for feedback before a single line of code is written."
+        },
+        {
+          "t": "Development",
+          "b": "Your site is built in modern, standards-based code — no bloat. Every site is built mobile-first, tested across browsers, and optimised for fast load times."
+        },
+        {
+          "t": "Content Setup",
+          "b": "You provide your text and images, and we place and format everything to look its best. We'll tell you exactly what we need and in what format before we start."
+        },
+        {
+          "t": "Hosting & Deployment",
+          "b": "We handle the full deployment, from setting up your hosting environment to connecting your domain."
+        },
+        {
+          "t": "Handover & Support",
+          "b": "Once live, you receive the full source code. We walk you through how everything works and stay available for a post-launch support window."
+        }
+      ],
+      "pricing": [
+        {
+          "tier": "Starter Site",
+          "price": "UGX 350,000",
+          "price_note": "+ UGX 80,000 / month hosting",
+          "desc": "Perfect for individuals and small projects that need a clean, professional online presence without the complexity.",
+          "features": [
+            "3 months free hosting included",
+            "Single-page website (up to 5 sections)",
+            "Mobile-responsive design",
+            "Basic contact form",
+            "Custom domain setup",
+            "Up to 2 revision rounds",
+            "1-week delivery"
+          ],
+          "popular": false
+        },
+        {
+          "tier": "Standard Site",
+          "price": "UGX 750,000",
+          "price_note": "+ UGX 150,000 / month hosting",
+          "desc": "For businesses and creators who need a fully custom, multi-page site with proper hosting and a real domain.",
+          "features": [
+            "3 months free hosting included",
+            "Multi-page website (up to 5 pages)",
+            "Custom design & animations",
+            "Mobile-responsive design",
+            "Contact form with email delivery",
+            "Basic SEO setup",
+            "Custom domain setup",
+            "Up to 3 revision rounds",
+            "2–3 week delivery"
+          ],
+          "popular": true
+        },
+        {
+          "tier": "Super Site",
+          "price": "UGX 1,200,000",
+          "price_note": "+ UGX 250,000 / month hosting",
+          "desc": "For complex projects that demand advanced functionality, backend capability, and a fully configured server environment.",
+          "features": [
+            "3 months free hosting included",
+            "Unlimited pages",
+            "Full custom design from scratch",
+            "Advanced animations & interactions",
+            "Contact form with email delivery",
+            "Advanced SEO setup",
+            "Custom domain + SSL certificate",
+            "Priority support",
+            "Up to 5 revision rounds",
+            "Timeline agreed per project"
+          ],
+          "popular": false
+        }
+      ]
+    },
+    {
+      "slug": "ui-ux-design",
+      "name": "UI/UX Design",
+      "short": "Interfaces that are clean, intuitive, and built to convert.",
+      "included": [
+        {
+          "t": "Research & Flows",
+          "b": "We start with how users think — mapping the journey before any pixels are pushed."
+        },
+        {
+          "t": "Wireframes",
+          "b": "Low-fidelity structure so we agree on layout and hierarchy early, cheaply."
+        },
+        {
+          "t": "High-Fidelity Design",
+          "b": "Figma mockups with real components, styles, and typography."
+        },
+        {
+          "t": "Prototype",
+          "b": "Clickable prototype so you can feel the experience before it's built."
+        },
+        {
+          "t": "Developer Handover",
+          "b": "Organised files, specs, and assets your developers can build from."
+        }
+      ],
+      "pricing": [
+        {
+          "tier": "Basic Design",
+          "price": "UGX 100,000",
+          "price_note": "one-time",
+          "desc": "Best for simple, single-purpose projects like a landing page or a basic app screen.",
+          "features": [
+            "Up to 3 screens designed",
+            "Mobile-responsive layouts",
+            "High-fidelity Figma mockup",
+            "Up to 1 revision round",
+            "3–5 day delivery"
+          ],
+          "popular": false
+        },
+        {
+          "tier": "Standard Design",
+          "price": "UGX 250,000",
+          "price_note": "one-time",
+          "desc": "For projects that need multiple screens, a consistent design language, and an interactive prototype.",
+          "features": [
+            "Up to 8 screens designed",
+            "Mobile & desktop layouts",
+            "Interactive Figma prototype",
+            "Component library included",
+            "Up to 2 revision rounds",
+            "1–2 week delivery"
+          ],
+          "popular": true
+        },
+        {
+          "tier": "Full Design System",
+          "price": "Let's Talk",
+          "price_note": "custom quote",
+          "desc": "For complex products that need a complete, scalable design system built from the ground up.",
+          "features": [
+            "Unlimited screens",
+            "Full component library & style guide",
+            "User flow mapping",
+            "Interactive prototype",
+            "Developer handover package",
+            "Up to 4 revision rounds",
+            "Timeline agreed per project"
+          ],
+          "popular": false
+        }
+      ]
+    },
+    {
+      "slug": "graphic-design",
+      "name": "Graphic Design",
+      "short": "Visuals that communicate who you are before you say a word.",
+      "included": [
+        {
+          "t": "Brand Identity",
+          "b": "Logo, colour palette, and typography that work together as a system."
+        },
+        {
+          "t": "Social Assets",
+          "b": "Templates and ready-to-post graphics for your channels."
+        },
+        {
+          "t": "Print Materials",
+          "b": "Flyers, posters, business cards, and banners — print-ready."
+        },
+        {
+          "t": "Brand Guidelines",
+          "b": "A style guide so your brand stays consistent everywhere."
+        },
+        {
+          "t": "Source Files",
+          "b": "All vector and export files handed over, clearly organised."
+        }
+      ],
+      "pricing": [
+        {
+          "tier": "Starter",
+          "price": "UGX 80,000",
+          "price_note": "one-time",
+          "desc": "Best for individuals or small projects needing a single deliverable — a logo, a flyer, or a set of social templates.",
+          "features": [
+            "1 deliverable (logo, flyer, or social set)",
+            "2 initial concepts",
+            "Up to 1 revision round",
+            "Web-ready exports (PNG, JPG)",
+            "3–5 day delivery"
+          ],
+          "popular": false
+        },
+        {
+          "tier": "Standard",
+          "price": "UGX 200,000",
+          "price_note": "one-time",
+          "desc": "For businesses that need a cohesive visual identity — logo, colour palette, typography, and supporting assets.",
+          "features": [
+            "Logo + brand identity pack",
+            "Colour palette & typography guide",
+            "Up to 3 supporting assets",
+            "Up to 2 revision rounds",
+            "Vector & web-ready exports",
+            "1–2 week delivery"
+          ],
+          "popular": true
+        },
+        {
+          "tier": "Full Brand",
+          "price": "Let's Talk",
+          "price_note": "custom quote",
+          "desc": "For organisations needing a complete, scalable brand system — from strategy and identity through to all print and digital touchpoints.",
+          "features": [
+            "Brand strategy & positioning",
+            "Full logo suite (primary, secondary, icon)",
+            "Complete brand style guide",
+            "Social media & print asset pack",
+            "Up to 4 revision rounds",
+            "All source & export files",
+            "Timeline agreed per project"
+          ],
+          "popular": false
+        }
+      ]
+    },
+    {
+      "slug": "database-management",
+      "name": "Database Management",
+      "short": "Databases that store data reliably, retrieve it fast, and scale as you grow.",
+      "included": [
+        {
+          "t": "Schema Design",
+          "b": "Tables, relationships, and indexes designed for how you actually query."
+        },
+        {
+          "t": "ER Diagrams",
+          "b": "Visual documentation of your data model."
+        },
+        {
+          "t": "Migration",
+          "b": "Moving from spreadsheets or a legacy database without losing data."
+        },
+        {
+          "t": "Access Control",
+          "b": "Role-based permissions so the right people see the right data."
+        },
+        {
+          "t": "Backups",
+          "b": "Automated backup configuration and recovery planning."
+        }
+      ],
+      "pricing": [
+        {
+          "tier": "Starter Database",
+          "price": "UGX 200,000",
+          "price_note": "one-time",
+          "desc": "For small projects or single-purpose applications that need a clean, well-structured database to get started on.",
+          "features": [
+            "Up to 10 tables",
+            "Full schema design & ER diagram",
+            "Indexes & relationships configured",
+            "Basic user access control",
+            "Sample data population",
+            "Schema documentation",
+            "3–5 day delivery"
+          ],
+          "popular": false
+        },
+        {
+          "tier": "Standard Database",
+          "price": "UGX 500,000",
+          "price_note": "one-time",
+          "desc": "For business applications that need a robust, multi-table database with data migration and query optimisation.",
+          "features": [
+            "Up to 25 tables",
+            "Full schema design & ER diagram",
+            "Data migration from spreadsheets or legacy DB",
+            "Query optimisation & indexing",
+            "Role-based user access control",
+            "Automated backup configuration",
+            "Full schema documentation",
+            "1–2 week delivery"
+          ],
+          "popular": true
+        },
+        {
+          "tier": "Advanced Database",
+          "price": "Let's Talk",
+          "price_note": "custom quote",
+          "desc": "For large or complex systems with many tables, high-volume data, stored procedures, or ongoing DBA support.",
+          "features": [
+            "Unlimited tables & complexity",
+            "Advanced schema & normalisation",
+            "Stored procedures & triggers",
+            "Complex data migration & transformation",
+            "Performance tuning under load",
+            "Multi-app integration support",
+            "Ongoing DBA retainer available",
+            "Timeline agreed per project"
+          ],
+          "popular": false
+        }
+      ]
+    },
+    {
+      "slug": "system-building",
+      "name": "System Building",
+      "short": "Custom systems tailored exactly to how your business operates.",
+      "included": [
+        {
+          "t": "Requirements",
+          "b": "We map what you do today manually and turn it into system logic."
+        },
+        {
+          "t": "Database",
+          "b": "A MySQL database designed for your data."
+        },
+        {
+          "t": "Application",
+          "b": "Web-based software that runs in the browser, on any device."
+        },
+        {
+          "t": "Reporting",
+          "b": "Dashboards and exportable reports for the numbers that matter."
+        },
+        {
+          "t": "Training",
+          "b": "We train your staff and hand over documentation."
+        }
+      ],
+      "pricing": [
+        {
+          "tier": "Starter System",
+          "price": "UGX 500,000",
+          "price_note": "starting point",
+          "desc": "For small businesses that need a single-module system — a basic inventory tracker, a simple booking form, or a staff records tool.",
+          "features": [
+            "Single module / core feature",
+            "MySQL database included",
+            "Up to 2 user roles",
+            "Basic reporting (exportable)",
+            "Web-based (runs in browser)",
+            "Up to 2 revision rounds",
+            "2–3 week delivery"
+          ],
+          "popular": false
+        },
+        {
+          "tier": "Standard System",
+          "price": "UGX 1,500,000",
+          "price_note": "starting point",
+          "desc": "For businesses that need a multi-module system — inventory plus sales, bookings plus staff records, or a full POS with reporting.",
+          "features": [
+            "Up to 3 modules",
+            "MySQL database included",
+            "Up to 4 user roles with permissions",
+            "Dashboard with key metrics",
+            "Reporting & data export",
+            "Up to 3 revision rounds",
+            "4–6 week delivery"
+          ],
+          "popular": true
+        },
+        {
+          "tier": "Enterprise System",
+          "price": "Let's Talk",
+          "price_note": "custom quote",
+          "desc": "For large organisations or complex requirements — multi-branch systems, API integrations, high user volumes, or systems that scale across departments.",
+          "features": [
+            "Unlimited modules",
+            "Advanced database architecture",
+            "Full role-based access control",
+            "API integrations (M-Pesa, SMS, email)",
+            "Advanced reporting & analytics",
+            "Staff training & documentation",
+            "Up to 5 revision rounds",
+            "Timeline agreed per project"
+          ],
+          "popular": false
+        }
+      ]
+    }
+  ],
+  "team": [
+    {
+      "name": "Anwaar Batala",
+      "role": "Developer",
+      "bio": "Turns briefs into working software — comfortable anywhere from the database schema to the deployed build.",
+      "github": "https://github.com/FrostyDot512",
+      "linkedin": "https://www.linkedin.com/in/anwaar-batala-46069a362/",
+      "avatar": "https://avatars.githubusercontent.com/u/214493925?v=4",
+      "meta": "16 repositories on GitHub"
+    },
+    {
+      "name": "Benjamin Ongom",
+      "role": "UI/UX Designer",
+      "bio": "UI/UX designer focused on creating simple, intuitive, and meaningful digital experiences.",
+      "github": "https://github.com/GrandMaster142",
+      "linkedin": "https://www.linkedin.com/in/benjamin-ongom-a2a5672a6/",
+      "avatar": "https://avatars.githubusercontent.com/u/190591835?v=4",
+      "meta": "Fresh on GitHub — portfolio building up"
+    },
+    {
+      "name": "Elisha Benjamin Mukisa",
+      "role": "Frontend Engineer",
+      "bio": "I design and build for the web keeping the experience simple and the visuals stunning.",
+      "github": "https://github.com/eliosha",
+      "linkedin": "https://www.linkedin.com/in/elisha-mukisa-5b5963402/",
+      "avatar": "https://avatars.githubusercontent.com/u/223256913?v=4",
+      "meta": "Runs his own server · 6 repositories",
+      "blog": "https://info.mashcloud.uk"
+    },
+    {
+      "name": "Jonathan Miyingo",
+      "role": "Developer",
+      "bio": "Picks up new frameworks fast and ships the details that make a build feel finished.",
+      "github": "https://github.com/Mrj-1007",
+      "linkedin": "https://www.linkedin.com/in/jonathan-m-a0818a313/",
+      "avatar": "https://avatars.githubusercontent.com/u/236309460?v=4",
+      "meta": "5 repositories on GitHub"
+    },
+    {
+      "name": "Mark Lui",
+      "role": "Software Developer & Cloud Architect",
+      "bio": "Building custom desktop apps for small businesses, focused on inventory management and automation.",
+      "github": "https://github.com/Trojannetwork",
+      "linkedin": "https://www.linkedin.com/in/lui-mark-25259339b/",
+      "avatar": "https://avatars.githubusercontent.com/u/214070556?v=4",
+      "meta": "BSIT student · 7 repositories"
+    },
+    {
+      "name": "Moses Leo",
+      "role": "Developer",
+      "bio": "Builds with AI in the loop — prototypes fast, then hardens whatever survives real users.",
+      "github": "https://github.com/MOSES-LEO-tech",
+      "linkedin": "https://www.linkedin.com/in/moses-leo-04477a336/",
+      "avatar": "https://avatars.githubusercontent.com/u/221892635?v=4",
+      "meta": "MOMOLILI_TECH · 8 repositories"
+    },
+    {
+      "name": "Otwiine Olweny",
+      "role": "Developer",
+      "bio": "Comes from geospatial studies — brings mapping and data thinking to our web work.",
+      "github": "https://github.com/Otwiine",
+      "linkedin": "https://www.linkedin.com/in/otwiine-olweny-60b871402/",
+      "avatar": "https://avatars.githubusercontent.com/u/196969050?v=4",
+      "meta": "Kampala, Uganda · 14 repositories",
+      "blog": "https://otwiine.github.io/GeoPortfolio/",
+      "twitter": "https://x.com/Mr_OJO16"
+    },
+    {
+      "name": "Josh Prosper",
+      "role": "Team member",
+      "bio": "Recently joined the roster — profile and links landing soon.",
+      "github": "",
+      "linkedin": "",
+      "avatar": "",
+      "tag": "New"
+    }
+  ],
+  "work": [
+    {
+      "name": "Vybent",
+      "kind": "Event ticketing platform",
+      "desc": "Tiered ticketing for concerts, festivals, and sports — mobile check-ins and a live sales dashboard.",
+      "note": "Flagship product",
+      "media": "video"
+    },
+    {
+      "name": "OAE Inventory",
+      "kind": "Client management system",
+      "desc": "Inventory and stock management system built for a client operation.",
+      "note": "Custom system build",
+      "media": "image"
+    },
+    {
+      "name": "What About Anime",
+      "kind": "Website",
+      "desc": "Anime discovery and community site.",
+      "note": "by Elisha Benjamin",
+      "media": "link",
+      "url": "https://whataboutanime.com/"
+    },
+    {
+      "name": "Kaizoq",
+      "kind": "Website / product",
+      "desc": "Web product by the team.",
+      "note": "by Elisha Benjamin",
+      "media": "link",
+      "url": "https://kaizoq.com/"
+    }
+  ],
+  "faq": [
+    {
+      "q": "How long does a project take?",
+      "a": "Starter sites take around 1 week, Standard sites 2–3 weeks, and larger systems are scoped per project. Content readiness and revision rounds affect delivery."
+    },
+    {
+      "q": "Do I need to provide the content?",
+      "a": "Yes — you provide your text, images, and branding. We advise on structure and sourcing, and copywriting is available as a paid add-on."
+    },
+    {
+      "q": "Can you update or rebuild my existing site?",
+      "a": "Yes. Share your current site and what you'd like changed, and we'll assess and quote from there."
+    },
+    {
+      "q": "What do I need to get started?",
+      "a": "Just a rough idea of what you want, a few sites you like the look of, and your budget. We handle the rest from the discovery call onwards."
+    },
+    {
+      "q": "Do you offer ongoing maintenance?",
+      "a": "Yes. Post-launch support is available for updates, fixes, and small changes — either case-by-case or as a monthly retainer."
+    },
+    {
+      "q": "What about payment terms?",
+      "a": "50% deposit to begin, balance due on launch. Hosting is free for the first 3 months, then billed monthly via Mobile Money."
+    }
+  ],
+  "stats": [
+    {
+      "value": 6,
+      "suffix": "",
+      "label": "Products & platforms shipped"
+    },
+    {
+      "value": 5,
+      "suffix": "",
+      "label": "Service lines, end-to-end"
+    },
+    {
+      "value": 8,
+      "suffix": "",
+      "label": "People on the team"
+    },
+    {
+      "value": 100,
+      "suffix": "%",
+      "label": "Built in Kampala"
+    }
+  ]
+}

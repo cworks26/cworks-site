@@ -1,0 +1,1037 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   CWorks — design system
+   Built on the Linear reference: midnight precision instrument
+   Void canvas, hairline borders, one acid-lime action per view.
+   ========================================================================== */
+
+@theme {
+  /* Colors */
+  --color-void: #08090a;
+  --color-carbon: #0f1011;
+  --color-obsidian: #161718;
+  --color-graphite: #23252a;
+  --color-smoke: #383b3f;
+  --color-ash: #7c8189;
+  --color-fog: #9aa0a9;
+  --color-mist: #d0d6e0;
+  --color-bone: #ece7d9;
+  --color-paper: #f6f2e7; /* ivory */
+  --color-acid: #3fb9ec; /* CWorks logo blue — the single action color */
+  --color-cwblue: #3fb9ec;      /* CWorks logo sky blue */
+  --color-cwblue-deep: #1d9ad6;
+  --color-cwblue-dim: rgba(63, 185, 236, 0.14);
+  --color-pulse: #3fb9ec;
+  --color-coral: #f6f2e7;
+      
+  /* Type families */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-mono-berkeley), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Radii — three radii is the entire vocabulary */
+  --radius-btn: 6px;
+  --radius-card: 12px;
+  --radius-pill: 9999px;
+}
+
+:root {
+  --page-max: 1200px;
+  --section-gap: 96px;
+  --card-padding: 24px;
+  --hairline: #23252a;
+  --hairline-soft: #383b3f;
+
+  /* Semantic text ramp — all values clear WCAG AA on the void canvas */
+  --text-primary: #f6f2e7;
+  --text-secondary: #a9aeb8;
+  --text-tertiary: #8f949d;
+}
+
+* {
+  border-color: var(--hairline);
+}
+
+html {
+  background: var(--color-void);
+  color-scheme: dark;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-void);
+  color: var(--color-mist);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  font-feature-settings: "cv01" on, "ss03" on, "zero" on;
+  font-variation-settings: "opsz" 32;
+}
+
+/* --------------------------------------------------------------------------
+   Typography scale — weights cap at 590, tracking tightens as size grows
+   -------------------------------------------------------------------------- */
+
+.t-display {
+  font-size: clamp(40px, 7vw, 72px);
+  line-height: 1;
+  letter-spacing: -0.022em;
+  font-weight: 510;
+  color: var(--color-paper);
+}
+
+.t-hero {
+  font-size: clamp(36px, 6vw, 64px);
+  line-height: 1.02;
+  letter-spacing: -0.022em;
+  font-weight: 510;
+  color: var(--color-paper);
+}
+
+.t-heading {
+  font-size: clamp(30px, 4.2vw, 48px);
+  line-height: 1;
+  letter-spacing: -0.022em;
+  font-weight: 510;
+  color: var(--color-paper);
+}
+
+.t-subheading {
+  font-size: clamp(22px, 2.6vw, 32px);
+  line-height: 1.13;
+  letter-spacing: -0.022em;
+  font-weight: 400;
+  color: var(--color-paper);
+}
+
+.t-h4 {
+  font-size: 24px;
+  line-height: 1.33;
+  letter-spacing: -0.012em;
+  font-weight: 400;
+  color: var(--color-paper);
+}
+
+.t-emphasis {
+  font-size: 20px;
+  line-height: 1.33;
+  letter-spacing: -0.012em;
+  font-weight: 590;
+  color: var(--color-paper);
+}
+
+.t-body {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--color-mist);
+}
+
+.t-body-sm {
+  font-size: 15px;
+  line-height: 1.6;
+  letter-spacing: -0.011em;
+  font-weight: 400;
+  color: var(--color-fog);
+}
+
+.t-caption {
+  font-size: 13px;
+  line-height: 1.2;
+  font-weight: 400;
+  color: var(--color-fog);
+}
+
+.t-label {
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 400;
+  color: var(--color-ash);
+}
+
+.t-mono {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: -0.013em;
+  font-feature-settings: "cv01" on, "ss03" on;
+}
+
+/* --------------------------------------------------------------------------
+   Layout
+   -------------------------------------------------------------------------- */
+
+.container-cw {
+  width: 100%;
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+.section {
+  padding-block: var(--section-gap);
+  position: relative;
+  /* Each major section fills the viewport, content vertically centered */
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.section > .container-cw { width: 100%; }
+
+.section-sm {
+  padding-block: 64px;
+}
+
+.rule {
+  height: 1px;
+  background: var(--hairline);
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   Surfaces — elevation via hairline borders, not shadow stacks
+   -------------------------------------------------------------------------- */
+
+.card {
+  background: var(--color-carbon);
+  border-radius: var(--radius-card);
+  box-shadow: rgb(35, 37, 42) 0 0 0 1px inset;
+  padding: var(--card-padding);
+}
+
+.card-subtle {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0 2px 4px 0;
+  padding: 8px;
+}
+
+.panel {
+  background: var(--color-obsidian);
+  border-radius: var(--radius-card);
+  box-shadow: rgb(35, 37, 42) 0 0 0 1px inset;
+}
+
+.hairline {
+  border: 1px solid var(--hairline);
+}
+
+/* Monogram avatar — one consistent identity tile for the whole team grid */
+.monogram {
+  display: flex;
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background:
+    radial-gradient(120% 120% at 30% 0%, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0) 60%),
+    var(--color-obsidian);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+  color: var(--color-mist);
+  font-size: 17px;
+  font-weight: 510;
+  letter-spacing: -0.011em;
+  text-transform: uppercase;
+}
+
+/* Pills — static tags by default; .pill-link adds interactive affordance */
+.pill-link {
+  transition: color 0.18s ease, border-color 0.18s ease, background-color 0.18s ease;
+}
+.pill-link:hover {
+  color: var(--color-paper);
+  border-color: var(--hairline-soft);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* --------------------------------------------------------------------------
+   Buttons — exactly one chromatic (acid lime) action per view
+   -------------------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: var(--radius-btn);
+  font-size: 14px;
+  font-weight: 510;
+  letter-spacing: -0.011em;
+  padding: 10px 16px;
+  transition: transform 0.15s ease, opacity 0.15s ease, background 0.15s ease,
+    border-color 0.15s ease;
+  white-space: nowrap;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.btn-acid {
+  background: var(--color-acid);
+  color: var(--color-void);
+  box-shadow: rgba(0, 0, 0, 0.01) 0 5px 2px 0, rgba(0, 0, 0, 0.04) 0 3px 2px 0,
+    rgba(0, 0, 0, 0.07) 0 1px 1px 0, rgba(0, 0, 0, 0.08) 0 0 1px 0;
+}
+
+.btn-acid:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--hairline);
+  color: var(--color-mist);
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.btn-ghost:hover {
+  border-color: var(--hairline-soft);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--color-paper);
+}
+
+.btn-white {
+  background: var(--color-paper);
+  color: var(--color-void);
+  border-radius: var(--radius-pill);
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 510;
+}
+
+.btn-white:hover {
+  opacity: 0.9;
+}
+
+/* --------------------------------------------------------------------------
+   Navigation
+   -------------------------------------------------------------------------- */
+
+.nav-link {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--color-mist);
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: color 0.15s ease;
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--color-paper);
+}
+
+.nav-link[data-active="true"] {
+  color: var(--color-paper);
+}
+
+.nav-link[data-active="true"]::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 2px;
+  height: 2px;
+  background: var(--color-acid);
+  border-radius: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   Badges / pills
+   -------------------------------------------------------------------------- */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-fog);
+  border-radius: 4px;
+  padding: 0 6px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-mist);
+  border-radius: var(--radius-pill);
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.pill-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(39, 166, 68, 0.4);
+  color: var(--color-pulse);
+  border-radius: var(--radius-pill);
+  padding: 4px 12px;
+  font-size: 12px;
+}
+
+/* --------------------------------------------------------------------------
+   Inputs
+   -------------------------------------------------------------------------- */
+
+.input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--color-mist);
+  border-radius: 6px;
+  padding: 12px 14px;
+  font-size: 14px;
+  font-weight: 400;
+  transition: border-color 0.15s ease;
+  font-family: inherit;
+}
+
+.input::placeholder {
+  color: var(--color-ash);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-mist);
+}
+
+.input:focus-visible {
+  outline: 2px solid rgba(228, 242, 34, 0.35);
+  outline-offset: 1px;
+}
+
+/* --------------------------------------------------------------------------
+   Hero gradient floor — the ONLY decorative gradient in the system
+   -------------------------------------------------------------------------- */
+
+.hero-floor {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 60%;
+  background: linear-gradient(
+    to bottom,
+    rgba(8, 9, 10, 0) 0%,
+    rgba(8, 9, 10, 0.55) 55%,
+    rgba(208, 214, 224, 0.07) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.grid-lines {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+      to right,
+      rgba(35, 37, 42, 0.55) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(35, 37, 42, 0.55) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 75%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Logo strip — neutral grey, evenly spaced, no card backgrounds */
+.logo-strip {
+  color: var(--color-fog);
+  font-size: 15px;
+  font-weight: 510;
+  letter-spacing: -0.011em;
+  opacity: 0.85;
+  transition: color 0.2s ease, opacity 0.2s ease;
+  white-space: nowrap;
+}
+
+.logo-strip:hover {
+  color: var(--color-mist);
+  opacity: 1;
+}
+
+/* Screenshot frame */
+.frame {
+  background: var(--color-carbon);
+  border-radius: var(--radius-card);
+  box-shadow: rgb(35, 37, 42) 0 0 0 1px inset;
+  overflow: hidden;
+}
+
+.chrome {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--hairline);
+  background: var(--color-obsidian);
+}
+
+.chrome-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: var(--color-smoke);
+}
+
+::selection {
+  background: rgba(228, 242, 34, 0.25);
+  color: var(--color-paper);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-void);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-graphite);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-smoke);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ==========================================================================
+   Progressive enhancement
+   Content is fully visible in the HTML (crawlers, no-JS, screenshots). The
+   `js` class is added by an inline script in <head>, so animations only ever
+   ENHANCE an already-visible page — never gate it.
+   ========================================================================== */
+
+.js .reveal {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.js .reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Above-the-fold entrance — runs on load, not on scroll */
+.js .rise {
+  opacity: 0;
+  animation: rise-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: var(--rise-delay, 0ms);
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Slow atmospheric drift */
+.js .drift {
+  animation: drift-y 9s ease-in-out infinite;
+}
+
+@keyframes drift-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Staggered group — children rise in sequence, offsets set in CSS */
+.js .reveal-group > * {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--group-delay, 0ms) + var(--group-step, 60ms) * var(--i, 0));
+}
+
+.js .reveal-group.is-in > * {
+  opacity: 1;
+  transform: none;
+}
+
+.js .reveal-group > *:nth-child(1) { --i: 0; }
+.js .reveal-group > *:nth-child(2) { --i: 1; }
+.js .reveal-group > *:nth-child(3) { --i: 2; }
+.js .reveal-group > *:nth-child(4) { --i: 3; }
+.js .reveal-group > *:nth-child(5) { --i: 4; }
+.js .reveal-group > *:nth-child(6) { --i: 5; }
+.js .reveal-group > *:nth-child(7) { --i: 6; }
+.js .reveal-group > *:nth-child(8) { --i: 7; }
+.js .reveal-group > *:nth-child(9) { --i: 8; }
+.js .reveal-group > *:nth-child(10) { --i: 9; }
+.js .reveal-group > *:nth-child(11) { --i: 10; }
+.js .reveal-group > *:nth-child(12) { --i: 11; }
+
+/* Hairline that draws across on entry */
+.js .draw-line {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.js .draw-line.is-in {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal,
+  .js .rise {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+  .js .drift {
+    animation: none;
+  }
+  .js .reveal-group > * {
+    opacity: 1;
+    transform: none;
+  }
+  .js .draw-line {
+    transform: none;
+  }
+}
+
+
+
+/* Grain — 2.5% film noise over the void; pointer-transparent */
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Spotlight — cursor-following glow, driven by Interactions.tsx setting --sx/--sy */
+.spotlight {
+  position: relative;
+  overflow: hidden;
+}
+.spotlight::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background: radial-gradient(
+    220px circle at var(--sx, 50%) var(--sy, 50%),
+    rgba(63, 185, 236, 0.09),
+    transparent 70%
+  );
+}
+.spotlight:hover::after {
+  opacity: 1;
+}
+
+/* Marquee — quiet drift, pauses on hover, duplicated track is aria-hidden */
+.marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 0;
+  animation: marquee 36s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+
+/* Sticky pinning helpers */
+.pin-left {
+  position: sticky;
+  top: 132px;
+  align-self: start;
+}
+.pin-card {
+  position: sticky;
+}
+@media (max-width: 767px) {
+  .pin-left, .pin-card { position: static; }
+}
+
+/* Tilt targets get a compositing hint */
+[data-tilt] {
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 0.18s ease-out, box-shadow 0.3s ease;
+}
+[data-tilt]:hover {
+  box-shadow: 0 0 0 1px var(--color-cwblue-dim), 0 24px 60px -30px rgba(63, 185, 236, 0.18);
+}
+
+/* Focus ring — brand blue */
+:focus-visible {
+  outline: 2px solid var(--color-cwblue);
+  outline-offset: 2px;
+}
+
+
+/* Service row icon tile warms to brand blue as the row is hovered */
+.group:hover [data-hover-tint],
+a.group:hover .spotlight-tile {
+  color: var(--color-cwblue);
+  box-shadow: rgb(63 185 236 / 0.35) 0 0 0 1px inset;
+}
+
+/* ==========================================================================
+   HEAVY MOTION LAYER — brand palette from the business card:
+   sky blue #3fb9ec, black, white. Optimize pass comes later.
+   ========================================================================== */
+
+/* Aurora beams — animated brand-blue light sweep behind the hero */
+.aurora {
+  position: absolute;
+  inset: -20% -10%;
+  pointer-events: none;
+  filter: blur(90px);
+  opacity: 0.55;
+}
+.aurora::before,
+.aurora::after {
+  content: "";
+  position: absolute;
+  width: 60vw;
+  height: 46vh;
+  border-radius: 50%;
+}
+.aurora::before {
+  left: -8%;
+  top: 6%;
+  background: radial-gradient(closest-side, rgba(63,185,236,0.35), rgba(63,185,236,0) 70%);
+  animation: aurora-a 16s ease-in-out infinite alternate;
+}
+.aurora::after {
+  right: -10%;
+  top: 30%;
+  background: radial-gradient(closest-side, rgba(63,185,236,0.22), rgba(63,185,236,0.06) 55%, rgba(0,0,0,0) 75%);
+  animation: aurora-b 21s ease-in-out infinite alternate;
+}
+@keyframes aurora-a {
+  0%   { transform: translate3d(0,0,0) rotate(-8deg) scale(1); }
+  100% { transform: translate3d(14vw, 6vh, 0) rotate(10deg) scale(1.25); }
+}
+@keyframes aurora-b {
+  0%   { transform: translate3d(0,0,0) rotate(6deg) scale(1.1); }
+  100% { transform: translate3d(-12vw, -5vh, 0) rotate(-9deg) scale(0.9); }
+}
+
+/* Shimmering gradient text */
+.shimmer {
+  background: linear-gradient(100deg,
+    var(--color-cwblue) 0%, #bfe9fb 20%,
+    var(--color-paper) 40%, #bfe9fb 60%, var(--color-cwblue) 80%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer-slide 5.5s ease-in-out infinite;
+}
+@keyframes shimmer-slide {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+
+/* Ken-burns slow zoom on hero/feature media */
+.kenburns {
+  animation: kenburns 18s ease-in-out infinite alternate;
+  transform-origin: 50% 40%;
+}
+@keyframes kenburns {
+  from { transform: scale(1); }
+  to   { transform: scale(1.08); }
+}
+
+/* Card hover: lift + brand glow ring */
+.card-lift {
+  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1),
+    box-shadow 0.35s cubic-bezier(0.16,1,0.3,1),
+    border-color 0.35s ease;
+}
+.card-lift:hover {
+  transform: translateY(-6px);
+  border-color: rgba(63,185,236,0.45);
+  box-shadow:
+    0 18px 50px -18px rgba(63,185,236,0.28),
+    0 0 0 1px rgba(63,185,236,0.25) inset;
+}
+
+/* Pulsing dot / CTA glow */
+.glow-pulse {
+  animation: glow-pulse 2.6s ease-in-out infinite;
+}
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(63,185,236,0.45); }
+  55%      { box-shadow: 0 0 0 9px rgba(63,185,236,0); }
+}
+
+/* Heavier scroll reveals: 26px travel + flip-in for grouped cards */
+.js .reveal {
+  transform: translateY(26px);
+  transition-duration: 0.8s;
+}
+.js .reveal-group > * {
+  transform: perspective(900px) translateY(26px) rotateX(6deg);
+  transform-origin: 50% 100%;
+  transition-duration: 0.7s;
+}
+.js .reveal-group.is-in > * {
+  transform: perspective(900px) translateY(0) rotateX(0);
+}
+
+/* Page transition fade-slide (wired via template.tsx) */
+.page-enter {
+  animation: page-enter 0.55s cubic-bezier(0.16,1,0.3,1) both;
+}
+@keyframes page-enter {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora::before, .aurora::after,
+  .shimmer, .kenburns, .glow-pulse, .page-enter {
+    animation: none;
+  }
+  .js .reveal-group > * { transform: none; }
+}
+
+/* ==========================================================================
+   Heavy motion II — kinetic type + native scroll-driven parallax
+   ========================================================================== */
+
+/* Kinetic word reveal — GPU-only (transform+opacity), overshoot settle */
+.js .kinetic {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.6em) rotate(2.5deg);
+  animation: kinetic-in 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: var(--rise-delay, 0ms);
+  will-change: transform, opacity;
+}
+@keyframes kinetic-in {
+  0% { opacity: 0; transform: translateY(0.6em) rotate(2.5deg); }
+  60% { opacity: 1; }
+  100% { opacity: 1; transform: translateY(0) rotate(0deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .kinetic { animation: none; opacity: 1; transform: none; }
+}
+
+/* Native scroll-driven parallax on the hero aurora (compositor thread,
+   zero JS) — drifts up and fades as the hero scrolls away. Gated so
+   unsupported browsers keep the static layer. */
+@supports (animation-timeline: view()) {
+  .aurora {
+    animation: aurora-parallax linear both;
+    animation-timeline: view();
+    animation-range: exit 0% exit 100%;
+  }
+  @keyframes aurora-parallax {
+    to { transform: translateY(-140px) scale(1.08); opacity: 0.35; }
+  }
+}
+
+/* Section hairlines draw across on entry — native scroll-driven */
+@supports (animation-timeline: view()) {
+  .section > .container-cw { position: relative; }
+}
+
+/* Footer mega wordmark */
+.footer-wordmark {
+  margin-top: 96px;
+  overflow: hidden;
+  line-height: 0.78;
+  user-select: none;
+}
+.footer-wordmark-text {
+  display: block;
+  font-size: clamp(72px, 17.5vw, 260px);
+  font-weight: 560;
+  letter-spacing: -0.045em;
+  color: transparent;
+  background: linear-gradient(180deg, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.02) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  white-space: nowrap;
+}
+@supports (animation-timeline: view()) {
+  .footer-wordmark-text {
+    animation: wordmark-rise linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 100%;
+  }
+  @keyframes wordmark-rise {
+    from { transform: translateY(60px); opacity: 0.2; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+}
+
+/* ==========================================================================
+   Editorial serif accents — the anti-generic move
+   ========================================================================== */
+:root { --font-serif-display: var(--font-instrument), Georgia, "Times New Roman", serif; }
+
+.serif-accent {
+  font-family: var(--font-serif-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.08em;
+  letter-spacing: -0.01em;
+  color: var(--color-cwblue);
+}
+
+.eyebrow { color: var(--color-cwblue); }
+
+/* QA hook: /?static=1 renders the fully-settled page (no motion) for
+   screenshot audits and debugging. */
+html.static .reveal,
+html.static .reveal-group > * {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+  transition: none !important;
+}
+html.static .rise,
+html.static .kinetic,
+html.static .word,
+html.static .drift,
+html.static .aurora,
+html.static .page-enter,
+html.static .grain::after {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.container-x {
+  width: 100%;
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  font-size: 14.5px;
+  color: var(--color-paper);
+  transition: gap 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.link-arrow:hover { gap: 12px; }
+
+/* --- Lenis smooth scroll -------------------------------------------- */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* --- Fluid scale: everything breathes with the screen --------------- */
+:root { --section-gap: clamp(64px, 12vh, 96px); }
+@media (max-width: 640px) {
+  :root { --card-padding: 18px; }
+  .container-cw, .container-x { padding-inline: 18px; }
+}
+
+/* ==========================================================================
+   Section bands — background rhythm without new colors (blue/ivory/black).
+   Each band flips SEMANTIC vars locally so children restyle for free.
+   ========================================================================== */
+
+/* Raised black — a quiet step up from the void; for proof/product moments */
+.band-raised {
+  background: var(--color-carbon);
+}
+
+/* Ivory inversion — the printed-paper beat; numbers and manifestos */
+.band-ivory {
+  background: var(--color-paper);
+  --text-primary: #0d0e10;
+  --text-secondary: #3c4046;
+  --text-tertiary: #565a61;
+  --hairline: rgba(10, 11, 12, 0.14);
+  --hairline-soft: rgba(10, 11, 12, 0.3);
+  --color-paper: #0d0e10;   /* headings flip to ink */
+  --color-mist: #26282c;
+  --color-fog: #4a4e55;
+  --color-ash: #6a6e75;
+  --color-cwblue: #1673a8;  /* blue darkened for AA on ivory */
+}
+.band-ivory .card,
+.band-ivory .monogram {
+  background: rgba(10, 11, 12, 0.04);
+  box-shadow: inset 0 0 0 1px rgba(10, 11, 12, 0.14);
+}
+.band-ivory .grid-lines { opacity: 0.35; }
+
+/* Full-bleed brand blue — the closer; ink text on CWorks blue */
+.band-blue {
+  background: linear-gradient(160deg, #2f9fdb 0%, #3fb9ec 55%, #57c4f2 100%);
+  --text-primary: #06131b;
+  --text-secondary: rgba(6, 19, 27, 0.78);
+  --hairline: rgba(6, 19, 27, 0.2);
+  --hairline-soft: rgba(6, 19, 27, 0.35);
+  --color-paper: #06131b;
+  --color-mist: #0b2430;
+  --color-fog: #10303f;
+  --color-ash: #144353;
+}
+.band-blue .btn-ghost { color: #06131b; border-color: rgba(6, 19, 27, 0.4); }
+.band-blue .btn-ghost:hover { background: rgba(6, 19, 27, 0.08); }
+.band-blue .btn-acid { background: #0a0a0a; color: #f6f2e7; }
+.band-blue .btn-acid:hover { background: #16181a; }
+.band-blue a { color: inherit; }
