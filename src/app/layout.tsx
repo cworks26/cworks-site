@@ -24,7 +24,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  icons: { icon: "/favicon.png" },
+  icons: { icon: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/favicon.png` },
   metadataBase: new URL("https://cworksug.com"),
   title: {
     default: "CWorks — We design, build, and ship digital products",

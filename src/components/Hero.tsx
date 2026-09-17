@@ -28,7 +28,7 @@ export default function Hero() {
       {/* background — mouse-reactive WebGL grid distortion over the footage still */}
       <div aria-hidden className="absolute inset-0">
         <GridDistortion
-          imageSrc="/videos/hero-bg.jpg"
+          imageSrc={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/videos/hero-bg.jpg`}
           grid={12}
           mouse={0.12}
           strength={0.12}

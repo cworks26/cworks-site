@@ -241,7 +241,7 @@ export function WorkFeature() {
               <div className="relative flex h-[300px] items-center justify-center overflow-hidden">
                 <video
                   className="h-full w-full object-cover"
-                  src="/videos/vybent-hero.mp4"
+                  src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/videos/vybent-hero.mp4`}
                   poster="/videos/vybent-hero.jpg"
                   autoPlay
                   muted

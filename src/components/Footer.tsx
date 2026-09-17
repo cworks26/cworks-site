@@ -21,7 +21,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-[10px]" style={{ color: "var(--color-paper)" }}>
-                            <img src="/logo-mark-dark.png" alt="" width={24} height={13} style={{ height: 13, width: "auto" }} />
+                            <img src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/logo-mark-dark.png`} alt="" width={24} height={13} style={{ height: 13, width: "auto" }} />
               <span style={{ fontSize: 16, fontWeight: 510, letterSpacing: "-0.011em" }}>
                 CWorks
               </span>

@@ -44,7 +44,7 @@ export default function Nav() {
           className="flex items-center gap-[10px]"
           style={{ color: "var(--color-paper)" }}
         >
-                    <img src="/logo-mark-dark.png" alt="" width={38} height={20} style={{ height: 20, width: "auto" }} />
+                    <img src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/logo-mark-dark.png`} alt="" width={38} height={20} style={{ height: 20, width: "auto" }} />
           <span
             style={{
               fontSize: 16,

@@ -70,7 +70,7 @@ export default function WorkPage() {
                 <div className="kenburns relative aspect-[16/9] overflow-hidden">
                   <video
                     className="h-full w-full object-cover"
-                    src="/videos/vybent-hero.mp4"
+                    src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/videos/vybent-hero.mp4`}
                     poster="/videos/vybent-hero.jpg"
                     autoPlay
                     muted
@@ -165,7 +165,7 @@ export default function WorkPage() {
                 </div>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/images/work/oae.jpg"
+                  src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/images/work/oae.jpg`}
                   alt="OAE Inventory management system sign-in screen"
                   className="w-full"
                   style={{ display: "block" }}
