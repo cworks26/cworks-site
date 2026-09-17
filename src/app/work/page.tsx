@@ -22,6 +22,7 @@ export default function WorkPage() {
   return (
     <>
       <PageHead
+        beams
         eyebrow="Work"
         title="Products we've shipped, in production."
         body="We'd rather show you the software than tell you about it. Here's what we've built and where it's running."

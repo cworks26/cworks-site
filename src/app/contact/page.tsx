@@ -53,6 +53,7 @@ export default function ContactPage() {
   return (
     <>
       <PageHead
+        beams
         eyebrow="Contact"
         title="Tell us what you're building."
         body="Send us the rough version — what you need, your timeline, and your budget. We'll come back with a clear proposal: scope, cost, and delivery date."

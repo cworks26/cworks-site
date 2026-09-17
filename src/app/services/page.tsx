@@ -23,6 +23,7 @@ export default function ServicesPage() {
   return (
     <>
       <PageHead
+        beams
         eyebrow="Services"
         title="Everything you need to get online and run properly."
         body="Five service lines, each one delivered end-to-end. Pick the piece you need — or hand us the whole thing."

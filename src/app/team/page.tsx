@@ -17,6 +17,7 @@ export default function TeamPage() {
   return (
     <>
       <PageHead
+        beams
         eyebrow="Team"
         title="A small team that ships."
         body="We're a group of developers and designers from different backgrounds, working out of Kampala on software we care about. No account managers between you and the people writing the code."

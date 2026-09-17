@@ -1,4 +1,5 @@
 import Link from "next/link";
+import BeamsLayer from "./BeamsLayer";
 import site from "@/content/site.json";
 import { Reveal, RevealGroup, RevealItem, CountUp } from "./Motion";
 import {
