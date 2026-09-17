@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { IconArrowRight } from "./Icons";
 import { Magnetic } from "./Interactions";
+import GridDistortion from "./GridDistortion";
 
 /* ==========================================================================
    Hero — full-screen. Real footage background (placeholder until the client
@@ -24,39 +25,37 @@ const WORDS: { w: string; d: number; italic?: boolean }[] = [
 export default function Hero() {
   return (
     <section className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden pt-[120px] pb-[9vh]">
-      {/* background footage */}
+      {/* background — mouse-reactive WebGL grid distortion over the footage still */}
       <div aria-hidden className="absolute inset-0">
-        <video
-          className="h-full w-full object-cover"
-          src="/videos/hero-bg.mp4"
-          poster="/videos/hero-bg.jpg"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
+        <GridDistortion
+          imageSrc="/videos/hero-bg.jpg"
+          grid={12}
+          mouse={0.12}
+          strength={0.12}
+          relaxation={0.92}
         />
         {/* legibility: void gradient from the bottom + brand-blue cast */}
         <div
           className="absolute inset-0"
           style={{
+            pointerEvents: "none",
             background:
               "linear-gradient(to top, rgba(8,9,10,0.96) 0%, rgba(8,9,10,0.72) 34%, rgba(8,9,10,0.38) 62%, rgba(8,9,10,0.55) 100%)",
           }}
         />
         <div
           className="absolute inset-0 mix-blend-soft-light"
-          style={{ background: "rgba(63,185,236,0.18)" }}
+          style={{ pointerEvents: "none", background: "rgba(63,185,236,0.18)" }}
         />
       </div>
 
       {/* words — bottom left */}
-      <div className="container-x relative">
+      <div className="container-x pointer-events-none relative">
         <p className="eyebrow rise" style={{ ["--rise-delay" as string]: "40ms" }}>
           A software studio in Kampala, Uganda
         </p>
 
-        <h1 className="mt-[22px] max-w-[16ch] text-[clamp(2.9rem,7.6vw,5.4rem)] font-[510] leading-[1.03] tracking-[-0.035em] text-[color:var(--text-primary)]">
+        <h1 className="mt-[22px] max-w-[16ch] text-[clamp(2rem,4.6vw,4.25rem)] font-[510] leading-[1.03] tracking-[-0.035em] text-[color:var(--text-primary)]">
           {WORDS.map(({ w, d, italic }) => (
             <span
               key={w}
@@ -78,7 +77,7 @@ export default function Hero() {
         </p>
 
         <div
-          className="rise mt-[30px] flex flex-wrap items-center gap-x-8 gap-y-4"
+          className="rise pointer-events-auto mt-[30px] flex flex-wrap items-center gap-x-8 gap-y-4"
           style={{ ["--rise-delay" as string]: "500ms" }}
         >
           <Magnetic>

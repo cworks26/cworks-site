@@ -63,11 +63,11 @@ export default function WorkPage() {
                 <span className="chrome-dot" />
                 <span className="chrome-dot" />
                 <span className="t-mono ml-2" style={{ color: "var(--color-ash)", fontSize: 11 }}>
-                  vybent — ticketing &amp; check-in
+                  vybent — motion graphics
                 </span>
               </div>
-              <div className="grid grid-cols-1 gap-px md:grid-cols-2">
-                <div className="kenburns relative aspect-[16/10] overflow-hidden">
+              <div>
+                <div className="kenburns relative aspect-[16/9] overflow-hidden">
                   <video
                     className="h-full w-full object-cover"
                     src="/videos/vybent-hero.mp4"
@@ -77,30 +77,14 @@ export default function WorkPage() {
                     loop
                     playsInline
                     preload="metadata"
-                    aria-label="Vybent ticketing interface"
+                    aria-label="Vybent motion graphics reel"
                   />
                   <span className="absolute bottom-3 left-3 pill" style={{ background: "rgba(8,9,10,0.7)" }}>
                     <IconPlay width={10} height={10} />
                     Ticketing flow
                   </span>
                 </div>
-                <div className="relative aspect-[16/10] overflow-hidden">
-                  <video
-                    className="h-full w-full object-cover"
-                    src="/videos/vybent-checkin.mp4"
-                    poster="/videos/vybent-checkin.jpg"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    preload="metadata"
-                    aria-label="Vybent mobile check-in"
-                  />
-                  <span className="absolute bottom-3 left-3 pill" style={{ background: "rgba(8,9,10,0.7)" }}>
-                    <IconPlay width={10} height={10} />
-                    Gate check-in
-                  </span>
-                </div>
+                
               </div>
             </div>
           </Reveal>

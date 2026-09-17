@@ -1035,3 +1035,48 @@ html.lenis, html.lenis body { height: auto; }
 .band-blue .btn-acid { background: #0a0a0a; color: #f6f2e7; }
 .band-blue .btn-acid:hover { background: #16181a; }
 .band-blue a { color: inherit; }
+
+/* ============ Responsive system (2025 best practices) ============ */
+/* Fluid type: base scale in clamp() so no jarring jumps; body stays zoomable */
+:root {
+  --step--1: clamp(0.8rem, 0.77rem + 0.15vw, 0.9rem);
+  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --step-1: clamp(1.2rem, 1.11rem + 0.45vw, 1.5rem);
+  --step-2: clamp(1.5rem, 1.28rem + 1.1vw, 2.25rem);
+  --step-3: clamp(1.8rem, 1.4rem + 2vw, 3rem);
+  --step-4: clamp(2.25rem, 1.5rem + 3.75vw, 4.5rem);
+  --step-5: clamp(2.75rem, 1.6rem + 5.75vw, 5.75rem);
+  --gutter: 24px; /* constant margin at every scale */
+  --page-max: 1280px;
+}
+/* Large screens: widen canvas instead of dead whitespace */
+@media (min-width: 1440px) { :root { --page-max: 1600px; } }
+@media (min-width: 1920px) { :root { --page-max: 1760px; } }
+html { font-size: 16px; }
+.container-cw, .container-x { padding-inline: var(--gutter); width: min(100%, var(--page-max)); }
+/* Touch targets (WCAG 2.5.8/2.5.5): 44px hit areas, 8px spacing */
+.btn, .btn-acid, .btn-ghost, .btn-white { min-height: 44px; }
+@media (pointer: coarse) { .btn, .btn-acid, .btn-ghost, .btn-white { min-height: 48px; } }
+.nav-link { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 12px; }
+.pill { display: inline-flex; align-items: center; min-height: 36px; }
+/* Fluid media */
+img, video { max-width: 100%; height: auto; }
+/* Readable line lengths */
+.t-body, .t-body-sm { max-width: 68ch; }
+/* Mobile adjustments */
+@media (max-width: 640px) {
+  .section { padding-block: 64px; min-height: 88svh; }
+  .monogram { width: 48px; height: 48px; font-size: 14px; }
+  .card { --card-padding: 18px; }
+}
+
+/* React Bits GridDistortion container */
+.distortion-container { overflow: hidden; }
+.distortion-container canvas { display: block; }
+
+/* Nav mobile trigger — display controlled by CSS, not inline style
+   (inline display would defeat the responsive class) */
+.nav-trigger { display: none; }
+@media (max-width: 767.98px) {
+  .nav-trigger { display: inline-flex; }
+}

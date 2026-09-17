@@ -44,7 +44,7 @@ export default function Nav() {
           className="flex items-center gap-[10px]"
           style={{ color: "var(--color-paper)" }}
         >
-                    <img src="/logo-mark-dark.png" alt="" width={26} height={14} style={{ height: 14, width: "auto" }} />
+                    <img src="/logo-mark-dark.png" alt="" width={38} height={20} style={{ height: 20, width: "auto" }} />
           <span
             style={{
               fontSize: 16,
@@ -57,6 +57,7 @@ export default function Nav() {
         </Link>
 
         {/* Desktop links */}
+        <div className="flex items-center gap-3">
         <div className="hidden items-center gap-1 md:flex">
           {LINKS.map((l) => (
             <Link
@@ -76,13 +77,14 @@ export default function Nav() {
         </div>
 
         {/* Mobile trigger */}
+        </div>
         <button
-          className="md:hidden"
+          className="nav-trigger"
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Close menu" : "Open menu"}
-          style={{ color: "var(--color-mist)" }}
+          style={{ color: "var(--color-paper)", minWidth: 44, minHeight: 44, alignItems: "center", justifyContent: "center" }}
         >
-          {open ? <IconClose width={22} height={22} /> : <IconMenu width={22} height={22} />}
+          {open ? <IconClose width={30} height={30} /> : <IconMenu width={30} height={30} />}
         </button>
       </nav>
 
