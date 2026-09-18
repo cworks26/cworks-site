@@ -15,8 +15,8 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="snap-block flex min-h-[100svh] flex-col justify-center" style={{ borderTop: "1px solid var(--hairline)" }}>
-      <div className="container-cw py-16">
+    <footer className="snap-block flex min-h-[100svh] flex-col justify-between pb-10 pt-14" style={{ borderTop: "1px solid var(--hairline)" }}>
+      <div className="container-cw">
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           {/* Brand */}
           <div>

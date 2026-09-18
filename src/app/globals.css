@@ -36,7 +36,7 @@
 }
 
 :root {
-  --page-max: 1200px;
+  --page-max: clamp(1152px, 92vw, 2200px);
   --section-gap: 96px;
   --card-padding: 24px;
   --hairline: #23252a;
@@ -1047,11 +1047,11 @@ html.lenis, html.lenis body { height: auto; }
   --step-4: clamp(2.25rem, 1.5rem + 3.75vw, 4.5rem);
   --step-5: clamp(2.75rem, 1.6rem + 5.75vw, 5.75rem);
   --gutter: 24px; /* constant margin at every scale */
-  --page-max: 1280px;
+
 }
 /* Large screens: widen canvas instead of dead whitespace */
 @media (min-width: 1440px) { :root { --page-max: 1600px; } }
-@media (min-width: 1920px) { :root { --page-max: 1760px; } }
+
 html { font-size: 16px; }
 .container-cw, .container-x { padding-inline: var(--gutter); width: min(100%, var(--page-max)); }
 /* Touch targets (WCAG 2.5.8/2.5.5): 44px hit areas, 8px spacing */
