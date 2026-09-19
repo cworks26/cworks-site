@@ -34,7 +34,7 @@ export function TrustStrip() {
           <p className="t-label shrink-0" >
             Selected work &amp; practice
           </p>
-          <div className="marquee min-w-0 flex-1" aria-hidden>
+          <div className="marquee w-full min-w-0 flex-1 md:w-auto" aria-hidden>
             <div className="marquee-track">
               {[...items, ...items].map((i, idx) => (
                 <span key={`${i}-${idx}`} className="logo-strip shrink-0 px-6">

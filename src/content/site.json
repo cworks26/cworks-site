@@ -532,7 +532,8 @@
       "desc": "Anime discovery and community site.",
       "note": "by Elisha Benjamin",
       "media": "link",
-      "url": "https://whataboutanime.com/"
+      "url": "https://whataboutanime.com/",
+      "image": "/images/work/whatabout-hero.jpg"
     },
     {
       "name": "Kaizoq",
@@ -540,7 +541,8 @@
       "desc": "Web product by the team.",
       "note": "by Elisha Benjamin",
       "media": "link",
-      "url": "https://kaizoq.com/"
+      "url": "https://kaizoq.com/",
+      "image": "/images/work/kaizoq-merch.jpg"
     }
   ],
   "faq": [

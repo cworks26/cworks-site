@@ -3,6 +3,8 @@ import site from "@/content/site.json";
 import PageHead from "@/components/PageHead";
 import { Reveal, RevealGroup, RevealItem } from "@/components/Motion";
 import { CTABand } from "@/components/sections";
+import ScrollStack, { ScrollStackItem } from "@/components/ScrollStack";
+import ShippedCard from "@/components/ShippedCard";
 import { Tilt } from "@/components/Interactions";
 import {
   IconArrowUpRight,
@@ -130,6 +132,62 @@ export default function WorkPage() {
         </div>
       </section>
 
+      {/* Custom systems — ScrollStack (React Bits) */}
+      <section id="systems" className="section band-ivory scroll-mt-24" style={{ borderTop: "1px solid var(--hairline)" }}>
+        <div className="container-cw">
+          <Reveal>
+            <p className="t-label">Custom systems</p>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <h2 className="t-heading mt-4">Software built around how a business already runs.</h2>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <ScrollStack className="mt-10" itemDistance={56} itemStackDistance={16} stackPosition="12%" itemScale={0.015}>
+          <ScrollStackItem key="OAE Inventory & Sales">
+            <div className="sys-card">
+              <img src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/images/work/oae.jpg`} alt="OAE Inventory & Sales" />
+              <div className="sys-meta">
+                <span className="badge">Inventory & sales system</span>
+                <h3 className="t-subheading">OAE Inventory & Sales</h3>
+                <p className="t-body-sm">Stock, movement history and reorder alerts for a distribution operation.</p>
+              </div>
+            </div>
+          </ScrollStackItem>
+          <ScrollStackItem key="JL Medical">
+            <div className="sys-card">
+              <img src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/images/work/jl-medical.jpg`} alt="JL Medical" />
+              <div className="sys-meta">
+                <span className="badge">Clinic management system</span>
+                <h3 className="t-subheading">JL Medical</h3>
+                <p className="t-body-sm">Patients, appointments, billing and lab modules for a clinic.</p>
+              </div>
+            </div>
+          </ScrollStackItem>
+          <ScrollStackItem key="School Library System">
+            <div className="sys-card">
+              <img src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/images/work/school-library.jpg`} alt="School Library System" />
+              <div className="sys-meta">
+                <span className="badge">Library management</span>
+                <h3 className="t-subheading">School Library System</h3>
+                <p className="t-body-sm">Catalogue, lending and returns for schools.</p>
+              </div>
+            </div>
+          </ScrollStackItem>
+          <ScrollStackItem key="School Vote Uganda">
+            <div className="sys-card">
+              <img src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/images/work/school-vote.jpg`} alt="School Vote Uganda" />
+              <div className="sys-meta">
+                <span className="badge">Digital voting</span>
+                <h3 className="t-subheading">School Vote Uganda</h3>
+                <p className="t-body-sm">Secure school voting platform.</p>
+              </div>
+            </div>
+          </ScrollStackItem>
+            </ScrollStack>
+          </Reveal>
+        </div>
+      </section>
+
       {/* Feature: OAE */}
       <section id="oae" className="section scroll-mt-24" style={{ borderTop: "1px solid var(--hairline)" }}>
         <div className="container-cw">
@@ -189,18 +247,12 @@ export default function WorkPage() {
             <h2 className="t-heading mt-4">Shipped by the team.</h2>
           </Reveal>
 
-          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div className="shipped-grid mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
             {site.work
               .filter((w) => w.media === "link")
               .map((w, i) => (
                 <Reveal key={w.name} delay={i * 0.06}>
-                  <a
-                    href={w.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="card card-lift spotlight group flex h-full flex-col justify-between"
-                    style={{ minHeight: 220 }}
-                  >
+                  <ShippedCard href={w.url ?? "#"} name={w.name} image={w.image}>
                     <div>
                       <div className="flex items-start justify-between gap-4">
                         <span className="badge">{w.kind}</span>
@@ -225,7 +277,7 @@ export default function WorkPage() {
                       <p className="t-body-sm mt-3">{w.desc}</p>
                     </div>
                     <p className="t-label mt-8">{w.note}</p>
-                  </a>
+                  </ShippedCard>
                 </Reveal>
               ))}
           </div>
