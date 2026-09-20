@@ -103,6 +103,13 @@ const ScrollStack = ({
       card.style.backfaceVisibility = "hidden";
       card.style.willChange = "transform";
     });
+    // Reduced motion: pinning is itself motion (WCAG 2.3.3) — serve a plain
+    // static stack: layout (margins/z-index) stays, transforms/listeners don't.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return () => {
+        cardsRef.current = [];
+      };
+    }
     measure();
 
     // re-measure when card heights settle (images, fonts) or on resize

@@ -92,9 +92,8 @@ export default function Nav() {
         {open && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+            animate={{ opacity: 1, height: "auto", transition: { duration: 0.22, ease: [0.16, 1, 0.3, 1] } }}
+            exit={{ opacity: 0, height: 0, transition: { duration: 0.15, ease: [0.3, 0, 0.8, 0.15] } }}
             className="md:hidden"
             style={{
               background: "rgba(8,9,10,0.97)",
