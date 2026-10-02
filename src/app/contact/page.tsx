@@ -15,9 +15,12 @@ import {
 } from "@/components/Icons";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: {
+    absolute: "Contact CWorks — Start a Project in Kampala | CWorks",
+  },
+  /* was 82 characters. */
   description:
-    "Start a project with CWorks — email, WhatsApp, or phone. Based in Kampala, Uganda.",
+    "Start a project with CWorks in Kampala, Uganda. Email us, message on WhatsApp, or call directly — we reply with a clear scope, cost and delivery date, no hard sell.",
   alternates: { canonical: "/contact/" },
 };
 

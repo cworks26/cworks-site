@@ -6,9 +6,12 @@ import { CTABand } from "@/components/sections";
 import { IconGitHub, IconLinkedIn, IconBlog } from "@/components/Icons";
 
 export const metadata: Metadata = {
-  title: "Team",
+  title: {
+    absolute: "Meet the Team — Engineers & Designers | CWorks",
+  },
+  /* was 73 characters — the shortest snippet on the site. */
   description:
-    "The CWorks team — developers, designers, and builders in Kampala, Uganda.",
+    "The people behind CWorks: developers, UI/UX designers and frontend engineers in Kampala, Uganda, building custom software, websites and business systems end-to-end.",
   alternates: { canonical: "/team/" },
 };
 

@@ -26,6 +26,19 @@ const WORDS: { w: string; d: number; italic?: boolean }[] = [
 export default function Hero() {
   return (
     <section className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden pt-[120px] pb-[9vh]">
+      {/* The hero plate is this page's LCP element (measured 2320ms, element
+          `.distortion-container`). It is a WebGL texture loaded by client JS, so
+          without a hint its download can't start until the bundle has hydrated.
+          Preloading it in the HTML buys that head start. Rendered here rather
+          than in the root layout because the plate is homepage-only — preloading
+          444KB on /work, /team and /contact would tax pages that never use it.
+          App Router hoists this link into <head>. */}
+      <link
+        rel="preload"
+        as="image"
+        href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/videos/hero-topo.webp`}
+        type="image/webp"
+      />
       {/* background — mouse-reactive WebGL grid distortion over the contour plate */}
       <div aria-hidden className="absolute inset-0">
         <GridDistortion

@@ -14,7 +14,12 @@ import {
 } from "@/components/Icons";
 
 export const metadata: Metadata = {
-  title: "Services & Pricing",
+  /* `absolute` opts out of the "%s — CWorks" template so the page controls its
+     own full title. Bare "Services — CWorks" used 31 of ~60 available SERP
+     characters and matched no query. */
+  title: {
+    absolute: "Web & Software Development Services Kampala | CWorks",
+  },
   description:
     "Web development, UI/UX design, graphic design, database management, and custom system building — with transparent UGX pricing from CWorks in Kampala.",
   alternates: { canonical: "/services/" },

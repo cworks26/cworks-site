@@ -15,7 +15,9 @@ import {
 } from "@/components/Icons";
 
 export const metadata: Metadata = {
-  title: "Work",
+  title: {
+    absolute: "Our Work — Software Products Built in Kampala | CWorks",
+  },
   description:
     "Products and platforms built by CWorks — Vybent event ticketing, OAE Inventory, and client websites from Kampala, Uganda.",
   alternates: { canonical: "/work/" },

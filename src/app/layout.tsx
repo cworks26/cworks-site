@@ -48,6 +48,21 @@ export const metadata: Metadata = {
     siteName: "CWorks",
     locale: "en_UG",
     type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "CWorks — software studio in Kampala, Uganda",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "CWorks — We design, build, and ship digital products",
+    description:
+      "A software studio in Kampala, Uganda. Websites, systems, databases, and brands.",
+    images: ["/og-image.png"],
   },
 };
 const instrument = Instrument_Serif({
