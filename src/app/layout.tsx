@@ -4,6 +4,7 @@ import "./globals.css";
 import LenisProvider from "@/components/LenisProvider";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import StructuredData from "@/components/StructuredData";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -95,6 +96,7 @@ export default function RootLayout({
         />
       </head>
       <body className="grain">
+        <StructuredData />
         <LenisProvider />
         <Nav />
         <main>{children}</main>

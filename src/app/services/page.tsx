@@ -17,6 +17,7 @@ export const metadata: Metadata = {
   title: "Services & Pricing",
   description:
     "Web development, UI/UX design, graphic design, database management, and custom system building — with transparent UGX pricing from CWorks in Kampala.",
+  alternates: { canonical: "/services/" },
 };
 
 export default function ServicesPage() {

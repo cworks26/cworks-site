@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   title: "CWorks — We design, build, and ship digital products",
   description:
     "CWorks is a software studio in Kampala, Uganda. Websites, custom systems, databases, and brands — built end-to-end for businesses that need software that fits.",
+  alternates: { canonical: "/" },
 };
 
 export default function Home() {

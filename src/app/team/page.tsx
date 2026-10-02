@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "Team",
   description:
     "The CWorks team — developers, designers, and builders in Kampala, Uganda.",
+  alternates: { canonical: "/team/" },
 };
 
 export default function TeamPage() {

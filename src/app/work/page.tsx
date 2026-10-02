@@ -18,6 +18,7 @@ export const metadata: Metadata = {
   title: "Work",
   description:
     "Products and platforms built by CWorks — Vybent event ticketing, OAE Inventory, and client websites from Kampala, Uganda.",
+  alternates: { canonical: "/work/" },
 };
 
 export default function WorkPage() {

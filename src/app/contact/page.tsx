@@ -18,6 +18,7 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
     "Start a project with CWorks — email, WhatsApp, or phone. Based in Kampala, Uganda.",
+  alternates: { canonical: "/contact/" },
 };
 
 export default function ContactPage() {
