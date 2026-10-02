@@ -1,25 +1,43 @@
 "use client";
 
-import { Children, useEffect, useRef, useState } from "react";
+import { Children, useEffect, useRef, useState, useSyncExternalStore } from "react";
 
 /* Pinned in-section scrolling: the deck locks in place while the visitor
    scrolls through its cards one by one, then releases to the next section.
    Enhancement only — without JS (or on mobile / reduced motion) it renders
    as a plain stacked list. */
+const PIN_QUERY = "(min-width: 1024px) and (prefers-reduced-motion: no-preference)";
+
+function subscribeToPinQuery(onChange: () => void) {
+  const mq = window.matchMedia(PIN_QUERY);
+  mq.addEventListener("change", onChange);
+  return () => mq.removeEventListener("change", onChange);
+}
+
+const getPinSnapshot = () => window.matchMedia(PIN_QUERY).matches;
+const getPinServerSnapshot = () => false;
+
 export default function PinnedDeck({ children }: { children: React.ReactNode }) {
   const wrapRef = useRef<HTMLDivElement>(null);
-  const [ready, setReady] = useState(false);
   const [active, setActive] = useState(0);
   const count = Children.count(children);
 
+  // Capability detection as an external store rather than an effect: the server
+  // snapshot is always false so SSR and hydration agree, and crossing the
+  // breakpoint or toggling reduced motion now re-evaluates immediately instead
+  // of needing a reload.
+  const canPin = useSyncExternalStore(
+    subscribeToPinQuery,
+    getPinSnapshot,
+    getPinServerSnapshot,
+  );
+  const ready = canPin && count >= 2;
+
   useEffect(() => {
+    if (!ready) return;
     const wrap = wrapRef.current;
     if (!wrap) return;
-    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    if (matchMedia("(max-width: 1023px)").matches) return;
-    if (count < 2) return;
 
-    setReady(true);
     let raf = 0;
     const onScroll = () => {
       if (raf) return;
@@ -39,8 +57,9 @@ export default function PinnedDeck({ children }: { children: React.ReactNode }) 
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
+      if (raf) cancelAnimationFrame(raf);
     };
-  }, [count]);
+  }, [count, ready]);
 
   if (!ready) return <div className="flex flex-col gap-4">{children}</div>;
 

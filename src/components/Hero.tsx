@@ -6,9 +6,10 @@ import { Magnetic } from "./Interactions";
 import GridDistortion from "./GridDistortion";
 
 /* ==========================================================================
-   Hero — full-screen. Real footage background (placeholder until the client
-   supplies the final film), words anchored bottom-left. SSR-complete; the
-   kinetic entrance is CSS-only enhancement.
+   Hero — full-screen. Contour plate background (owner-supplied artwork,
+   public/videos/hero-topo.webp) under the mouse-reactive WebGL layer, words
+   anchored bottom-left. SSR-complete; the kinetic entrance is CSS-only
+   enhancement.
    ========================================================================== */
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -25,10 +26,10 @@ const WORDS: { w: string; d: number; italic?: boolean }[] = [
 export default function Hero() {
   return (
     <section className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden pt-[120px] pb-[9vh]">
-      {/* background — mouse-reactive WebGL grid distortion over the footage still */}
+      {/* background — mouse-reactive WebGL grid distortion over the contour plate */}
       <div aria-hidden className="absolute inset-0">
         <GridDistortion
-          imageSrc={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/videos/hero-bg.jpg`}
+          imageSrc={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/videos/hero-topo.webp`}
           grid={12}
           mouse={0.12}
           strength={0.12}

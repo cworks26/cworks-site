@@ -5,7 +5,9 @@ import * as THREE from "three";
 
 /* GridDistortion — React Bits (reactbits.dev), TS-adapted for CWorks.
    WebGL plane with a mouse-reactive distortion grid. Renders a static
-   image fallback and skips init under prefers-reduced-motion. */
+   image fallback and skips init under prefers-reduced-motion.
+   The plate is fine contour line work, so the texture is sampled mipmapped
+   (see the load callback) and cover-cropped rather than stretched. */
 
 const vertexShader = `
 uniform float time;
@@ -22,12 +24,24 @@ const fragmentShader = `
 uniform sampler2D uDataTexture;
 uniform sampler2D uTexture;
 uniform vec4 resolution;
+uniform float uTextureAspect;
 varying vec2 vUv;
 
 void main() {
-  vec2 uv = vUv;
+  // cover, not stretch: crop whichever axis has slack so the plate keeps its
+  // own proportions at every viewport ratio (the plane itself is sized to the
+  // container, so unmodified vUv would smear a patterned plate on tall screens)
+  vec2 crop = vec2(1.0);
+  float viewAspect = resolution.x / max(resolution.y, 1.0);
+  if (viewAspect > uTextureAspect) {
+    crop.y = uTextureAspect / viewAspect;
+  } else {
+    crop.x = viewAspect / uTextureAspect;
+  }
+  vec2 uv = (vUv - 0.5) * crop + 0.5;
+
   vec4 offset = texture2D(uDataTexture, vUv);
-  gl_FragColor = texture2D(uTexture, uv - 0.02 * offset.rg);
+  gl_FragColor = texture2D(uTexture, uv - 0.02 * offset.rg * crop);
 }`;
 
 interface GridDistortionProps {
@@ -83,20 +97,31 @@ const GridDistortion = ({
 
     const uniforms = {
       time: { value: 0 },
-      resolution: { value: new THREE.Vector4() },
+      resolution: { value: new THREE.Vector4(1, 1, 1, 1) },
       uTexture: { value: null as THREE.Texture | null },
+      uTextureAspect: { value: 16 / 9 },
       uDataTexture: { value: null as THREE.DataTexture | null },
     };
 
     const textureLoader = new THREE.TextureLoader();
     textureLoader.load(imageSrc, (texture) => {
-      texture.minFilter = THREE.LinearFilter;
+      // mipmapped + anisotropic: a fine-line plate minified to the viewport
+      // shimmers and aliases with plain linear filtering.
+      // colorSpace is deliberately left at three's default: three only *calls*
+      // linearToOutputTexel from the colorspace_fragment chunk, which a custom
+      // fragment shader does not include (WebGLProgram only defines the function
+      // in its prefix), so setting SRGBColorSpace here decodes on sample with no
+      // re-encode and darkens the plate to ~55% of the asset / the CSS fallback.
+      texture.minFilter = THREE.LinearMipmapLinearFilter;
       texture.magFilter = THREE.LinearFilter;
+      texture.generateMipmaps = true;
+      texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
       texture.wrapS = THREE.ClampToEdgeWrapping;
       texture.wrapT = THREE.ClampToEdgeWrapping;
       imageAspectRef.current =
         (texture.image as HTMLImageElement).width /
         (texture.image as HTMLImageElement).height;
+      uniforms.uTextureAspect.value = imageAspectRef.current;
       uniforms.uTexture.value = texture;
       handleResize();
     });

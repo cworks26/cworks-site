@@ -1,0 +1,171 @@
+/* ==========================================================================
+   AccordionGallery — React Bits (reactbits.dev): JS + CSS, adapted for CWorks.
+   Palette: panel ground is carbon/obsidian (palette-legal black), type inside a
+   panel is deliberately white because the plate is always dark — these panels
+   do NOT follow the band's flipped tokens (see the ivory band on the homepage).
+   Sizing: --ag-height / --ag-gap / --ag-expand-ratio are set by the component.
+   ========================================================================== */
+
+.accordion-gallery {
+  --ag-height: 520px;
+  --ag-gap: 12px;
+  --ag-expand-ratio: 0.62;
+  --ag-media-window: 560;
+  --ag-media-window-h: 460;
+  --ag-scroll-duration: 0.6s;
+  --ag-scroll-ease: cubic-bezier(0.25, 1, 0.5, 1);
+
+  display: flex;
+  gap: var(--ag-gap);
+  width: 100%;
+  height: var(--ag-height);
+}
+
+.ag-panel {
+  display: grid;
+  place-items: center;
+  position: relative;
+  flex: 0 0 auto;
+  flex-grow: 1;
+  /* flex-basis must stay auto: a 0 basis silently overrides the pixel `width`
+     gsap writes when a panel opens or closes, collapsing the row. */
+  flex-basis: auto;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  background: var(--color-carbon);
+  outline: none;
+  transition: box-shadow var(--dur-med) var(--ease-enter);
+}
+
+.ag-panel:focus-visible {
+  box-shadow: 0 0 0 2px var(--color-cwblue);
+}
+
+.ag-panel__base {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.ag-panel__media {
+  position: relative;
+  width: var(--ag-media-size, 100%);
+  height: 100%;
+  max-width: none;
+  background-color: var(--color-carbon);
+  background-repeat: no-repeat;
+  will-change: transform;
+}
+
+/* the pasted drift-out state, kept for hover/focus parity with the original */
+.ag-panel__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.ag-panel__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.72) 0%,
+    rgba(0, 0, 0, 0.36) 38%,
+    rgba(0, 0, 0, 0.06) 70%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.ag-panel__text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 22px 24px;
+  overflow: hidden;
+}
+
+.ag-panel__text-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow: hidden;
+  will-change: transform, opacity;
+}
+
+.ag-panel__title {
+  margin: 0;
+  /* literal ivory, not var(--color-paper): .band-ivory redefines that token to
+     ink on the same element, and this plate is always dark */
+  color: #f6f2e7;
+  font-size: clamp(18px, 1.4vw, 24px);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.ag-panel__subtitle {
+  margin: 0;
+  color: rgba(246, 242, 231, 0.72);
+  font-size: 13px;
+  line-height: 1.45;
+  max-width: 34ch;
+}
+
+.ag-panel__tap-toggle {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  align-self: flex-start;
+  justify-self: end;
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  background: rgba(8, 9, 10, 0.55);
+  color: #f6f2e7;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ag-panel:hover .ag-panel__tap-toggle,
+.ag-panel:focus-within .ag-panel__tap-toggle {
+  opacity: 1;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
+  .accordion-gallery {
+    --ag-height: 70vh;
+  }
+}
+
+/* the component mirrors this query in JS (parallax/height off) */
+@media (max-width: 520px) {
+  .accordion-gallery {
+    --ag-height: calc(70vh - 40px);
+    --ag-gap: 8px;
+  }
+
+  .ag-panel {
+    border-radius: var(--radius-hairline);
+  }
+
+  .ag-panel__text {
+    padding: 14px 16px;
+  }
+
+  /* touch: no hover to hint at, so the affordance is always visible */
+  .ag-panel__tap-toggle {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ag-panel {
+    transition: none;
+  }
+}

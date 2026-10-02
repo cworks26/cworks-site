@@ -15,6 +15,8 @@ import {
 } from "./Icons";
 import { InventoryFrame, DeployFrame } from "./ProductFrame";
 import { Tilt, Magnetic } from "./Interactions";
+import AccordionGallery, { type AccordionItem } from "./AccordionGallery";
+import ServicesHandoff from "./ServicesHandoff";
 
 /* ---------- Trust strip --------------------------------------------------- */
 
@@ -105,7 +107,9 @@ export function SectionHead({
 
 export function ServicesSection() {
   return (
-    <section className="section">
+    <section id="services" className="section services-handoff">
+      {/* the ivory ground the pinned sequence reveals beneath the content */}
+      <div className="services-handoff__ground" aria-hidden />
       <div className="container-cw">
         <SectionHead
           eyebrow="What we do"
@@ -114,14 +118,15 @@ export function ServicesSection() {
           action={{ href: "/services", label: "All services & pricing" }}
         />
 
-        <div className="mt-16 flex flex-col">
+        {/* margin-top is owned by .services-handoff__list (viewport-height scaled) */}
+        <div className="services-handoff__list flex flex-col">
           {site.services.map((s, i) => {
             const Icon = serviceIcons[s.slug];
             return (
               <Reveal key={s.slug} delay={i * 0.04}>
                 <Link
                   href={`/services#${s.slug}`}
-                  className="spotlight group grid grid-cols-1 gap-6 py-8 md:grid-cols-[64px_1fr_1fr_auto] md:items-center"
+                  className="spotlight group grid grid-cols-1 gap-6 py-6 md:grid-cols-[64px_1fr_1fr_auto] md:items-center"
                   style={{ borderTop: "1px solid var(--hairline)" }}
                 >
                   <span
@@ -171,6 +176,7 @@ export function ServicesSection() {
           <div className="rule" />
         </div>
       </div>
+      <ServicesHandoff sectionId="services" />
     </section>
   );
 }
@@ -219,66 +225,51 @@ export function IndustriesSection() {
 /* ---------- Case study feature -------------------------------------------- */
 
 export function WorkFeature() {
+  const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
+  /* Vybent (video) and OAE (system) have no `image` field in site.json; both
+     already have a real asset elsewhere on the site — nothing is invented. */
+  const artFallback: Record<string, string> = {
+    Vybent: "/videos/vybent-hero.jpg",
+    "OAE Inventory": "/images/work/oae.jpg",
+  };
+
+  /* The panel window is landscape on a laptop, so the two portrait captures
+     are framed on the plate (contain) rather than cropped through the middle.
+     The two landscape captures crop from the left: measured column detail in
+     both assets is near zero through the centre and rich on the left, so a
+     centred crop left the collapsed strip looking empty. */
+  const artFit: Record<string, { fit: "cover" | "contain"; position?: string }> = {
+    Vybent: { fit: "cover", position: "5% center" },
+    "OAE Inventory": { fit: "cover", position: "5% center" },
+    "What About Anime": { fit: "contain" },
+    Kaizoq: { fit: "contain" },
+  };
+
+  const panels: AccordionItem[] = site.work.map((w) => {
+    const art = artFit[w.name] ?? { fit: "cover" as const };
+    return {
+      label: w.name,
+      alt: w.kind,
+      link: w.url,
+      image: `${base}${w.image ?? artFallback[w.name] ?? ""}`,
+      fit: art.fit,
+      position: art.position,
+    };
+  });
+
   return (
-    <section id="work-feature" className="section" style={{ borderTop: "1px solid var(--hairline)" }}>
+    <section id="work-feature" className="section band-ivory">
       <div className="container-cw">
         <SectionHead
           eyebrow="Selected work"
           title="Real products, built by CWorks."
+          body="Four products we designed, built and still run — a ticketing platform, an inventory system for a client operation, and two sites built by the team."
           action={{ href: "/work", label: "All work" }}
         />
 
-        <div className="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-[1.25fr_1fr]">
-          <Reveal>
-            <Tilt className="frame h-full">
-              <div className="chrome">
-                <span className="chrome-dot" />
-                <span className="chrome-dot" />
-                <span className="chrome-dot" />
-                <span className="t-mono ml-2" style={{ color: "var(--color-ash)", fontSize: 11 }}>
-                  vybent — event ticketing
-                </span>
-              </div>
-              <div className="relative flex h-[300px] items-center justify-center overflow-hidden">
-                <video
-                  className="h-full w-full object-cover"
-                  src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/videos/vybent-hero.mp4`}
-                  poster="/videos/vybent-hero.jpg"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  aria-label="Vybent event ticketing interface preview"
-                />
-              </div>
-            </Tilt>
-          </Reveal>
-
-          <Reveal delay={0.08}>
-            <div className="flex h-full flex-col justify-between">
-              <div>
-                <span className="badge">Flagship product</span>
-                <h3 className="t-subheading mt-4">Vybent</h3>
-                <p className="t-body mt-4" style={{ color: "var(--color-fog)" }}>
-                  An event ticketing platform for concerts, festivals, and sports.
-                  Tiered tickets including VIP and VVIP, mobile check-in at the
-                  gate, and a live sales dashboard the organisers watch in real
-                  time.
-                </p>
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {["Tiered ticketing", "Mobile check-in", "Live sales", "Uganda-built"].map((t) => (
-                    <span key={t} className="pill">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="mt-8">
-                <InventoryFrame />
-              </div>
-            </div>
-          </Reveal>
+        <div className="mt-14">
+          <AccordionGallery items={panels} />
         </div>
       </div>
     </section>

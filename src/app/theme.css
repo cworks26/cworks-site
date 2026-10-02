@@ -1,0 +1,28 @@
+@theme {
+  --color-primary: #3fb9ec;
+  --color-ink: #000000;
+  --color-neutral: #f6f2e7;
+  --font-hero-role: "Bookman Old Style";
+  --font-name: "Bookman Old Style";
+  --font-contact: "Book Antiqua";
+  --font-wordmark: "Bookman Old Style";
+  --text-hero-role: 24.67px;
+  --text-name: 17.33px;
+  --text-contact: 12px;
+  --text-wordmark: 12.13px;
+  --tracking-hero-role: 0.06em;
+  --tracking-name: 0em;
+  --tracking-contact: 0em;
+  --tracking-wordmark: 0.28em;
+  --font-weight-hero-role: 700;
+  --font-weight-name: 400;
+  --font-weight-contact: 400;
+  --font-weight-wordmark: 400;
+  --radius-none: 0px;
+  --radius-hairline: 2px;
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 32px;
+  --spacing-xl: 64px;
+}

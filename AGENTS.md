@@ -41,7 +41,7 @@ before/after rather than describing the diff.
 ## Design constraints (owner-decided — do not relitigate)
 
 - **Palette: cwblue `#3fb9ec`, ivory `#f6f2e7`, black. Nothing else.** Acid lime was removed; blue is the action colour.
-- **Full-screen sections:** `.section` is `min-h-100svh`, flex-centred, with scroll-snap (proximity while Lenis is active). `PageHead` headers and the footer are full-screen snap points.
+- **Smooth scrolling:** Lenis owns window scroll. There is deliberately **no CSS scroll-snap** — it fights Lenis and causes jank. Section-to-section "glide" is JS-driven in `LenisProvider.tsx` (directional, velocity-gated). Sections are content-sized via `padding-block`; only the hero and `PageHead` openers are full-screen.
 - **Motion is opt-in-safe:** `LenisProvider` skips reduced-motion users; `PinnedDeck` locks and steps through pricing tiers on desktop without reduced-motion, and falls back to a plain stack otherwise. Any new motion must keep that fallback.
 - Interaction primitives live in `Interactions.tsx` (Spotlight/Tilt/Magnetic/ScrollProgress) — extend them, do not re-implement.
 - Avoid these design tells (owner feedback): ALL-CAPS eyebrow labels, middle-dot meta separators, decorative arrows, filler copy.

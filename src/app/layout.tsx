@@ -68,6 +68,24 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        {/* Brand serifs. These are Monotype faces licensed to Google and served from
+            Google's CDN — their licence forbids copying or converting the files, so
+            they are linked here rather than self-hosted via next/font/google.
+            Supplied by DESIGN.md tokens (font-hero-role / font-name / font-contact /
+            font-wordmark); the site's own UI still renders in Inter. */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        {/* eslint-disable-next-line @next/next/no-page-custom-font -- that rule targets
+            the Pages Router (pages/_document.js); in the App Router a link in the root
+            layout is already global, so the warning does not apply here. */}
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Book+Antiqua:ital,wght@0,400;0,700;1,400;1,700&family=Bookman+Old+Style:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        />
         <script
           // Marks the document JS-capable so entrance animations only enhance
           // an already-visible page — never hide content from crawlers/no-JS.

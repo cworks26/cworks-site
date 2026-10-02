@@ -1,9 +1,12 @@
 @import "tailwindcss";
+@import "./theme.css";
 
 /* ==========================================================================
    CWorks — design system
-   Built on the Linear reference: midnight precision instrument
-   Void canvas, hairline borders, one acid-lime action per view.
+   Void canvas, hairline borders, one cyan action per view.
+   Palette is ivory + cyan + black and nothing else — the brand colours below
+   resolve to the tokens in theme.css (generated from DESIGN.md). Do not
+   reintroduce a hardcoded brand hex here.
    ========================================================================== */
 
 @theme {
@@ -17,13 +20,14 @@
   --color-fog: #9aa0a9;
   --color-mist: #d0d6e0;
   --color-bone: #ece7d9;
-  --color-paper: #f6f2e7; /* ivory */
-  --color-acid: #3fb9ec; /* CWorks logo blue — the single action color */
-  --color-cwblue: #3fb9ec;      /* CWorks logo sky blue */
-  --color-cwblue-deep: #1d9ad6;
+  --color-paper: var(--color-neutral); /* ivory */
+  --color-acid: var(--color-primary); /* CWorks logo blue — the single action color */
+  --color-cwblue: var(--color-primary); /* CWorks logo sky blue */
+  --color-cwblue-deep: #1d9ad6; /* not a brand token — darkened blue for AA on ivory */
   --color-cwblue-dim: rgba(63, 185, 236, 0.14);
-  --color-pulse: #3fb9ec;
-  --color-coral: #f6f2e7;
+  --color-pulse: var(--color-primary);
+  --color-coral: var(--color-neutral); /* misnomer — this value is ivory, not coral */
+
       
   /* Type families */
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -844,9 +848,19 @@ a.group:hover .spotlight-tile {
   transform: perspective(900px) translateY(0) rotateX(0);
 }
 
-/* Page transition fade-slide (wired via template.tsx) */
+/* Page transition fade-slide (wired via template.tsx)
+
+   Fill-mode is `backwards`, NOT `both`. With `both` the final keyframe is
+   retained, and an animated `transform: none` endpoint resolves to the
+   IDENTITY MATRIX (matrix(1,0,0,1,0,0)), not the `none` keyword. A retained
+   non-none transform makes this element a containing block for every
+   position:fixed descendant — which silently broke the pinned work band
+   (ScrollTrigger's `position: fixed` resolved against .page-enter, so the
+   "pinned" section scrolled away with the page). `backwards` applies the
+   from-state before the animation and reverts to the base styles after it,
+   so no transform survives past the 0.55s. */
 .page-enter {
-  animation: page-enter 0.55s cubic-bezier(0.16,1,0.3,1) both;
+  animation: page-enter 0.55s cubic-bezier(0.16,1,0.3,1) backwards;
 }
 @keyframes page-enter {
   from { opacity: 0; transform: translateY(14px); }
@@ -1032,6 +1046,67 @@ html.lenis, html.lenis body { height: auto; }
   box-shadow: inset 0 0 0 1px rgba(10, 11, 12, 0.14);
 }
 .band-ivory .grid-lines { opacity: 0.35; }
+
+/* ---------- Black → ivory handoff (services section) ---------------------- */
+/* The services section is a pinned stage: while it holds, its content slides
+   up and out and .services-handoff__ground — an ivory layer beneath it — fades
+   in. ServicesHandoff.tsx owns the scrubbed timeline; it only pins when the
+   section actually fits the viewport (it holds live service links, and a
+   taller-than-viewport pin would crop them).
+
+   The ground defaults to transparent, so no-JS, crawlers, reduced-motion and
+   ?static=1 all get the settled page: services black, work band ivory. */
+.services-handoff {
+  position: relative;
+}
+
+.services-handoff__ground {
+  position: absolute;
+  inset: 0;
+  /* literal ivory, matching .band-ivory above: `var(--color-paper)` would
+     resolve against the ink redefinition that class applies to itself */
+  background: #f6f2e7;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* The content sits above the ground so beat 1 reveals it rather than covering it */
+.services-handoff > .container-cw {
+  position: relative;
+  z-index: 1;
+}
+
+/* The pin requires the whole section on one screen — it holds live service
+   links, so a taller-than-viewport pin would crop them. `--section-gap` stays
+   global; only this section's spacing scales, and it scales with VIEWPORT
+   HEIGHT so the section self-fits rather than needing a breakpoint per laptop.
+
+   Measured budget before this block: heading 197px + list margin 40px + five
+   rows of 105px (56px of each row is padding) + 46px section padding = 870px,
+   i.e. 102px over a 1366x768 screen.
+
+   NOTE ON THE CEILINGS: these clamps are vh-driven, so the maxima are only
+   reached on very tall viewports — at 1440x900 they resolve to roughly
+   32px/27px/10px, not 54/40/14. The generous top end is ~1500px viewport
+   HEIGHT and up. Do not read the ceilings as "the 1440x900 look".
+
+   Verified pinned and uncropped with the closing rule on screen at 1280x720,
+   1024x768, 1366x768, 1280x800, 1440x900, 1600x900 and 1920x1080.
+   ServicesHandoff.tsx re-checks the real fit on every refresh and skips the
+   pin entirely if even this is not enough. */
+@media (min-width: 768px) {
+  .services-handoff {
+    padding-block: clamp(14px, 3.6vh, 54px);
+  }
+  .services-handoff__list {
+    margin-top: clamp(12px, 3vh, 40px);
+  }
+  .services-handoff__list > *,
+  .services-handoff__list > * > a {
+    padding-block: clamp(4px, 1.15vh, 14px);
+  }
+}
 
 /* Full-bleed brand blue — the closer; ink text on CWorks blue */
 .band-blue {

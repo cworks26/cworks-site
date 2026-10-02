@@ -2,6 +2,10 @@
 
 import { useEffect } from "react";
 import Lenis from "lenis";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 /* Smooth wheel (Lenis) + "ease into sections" landing.
 
@@ -58,7 +62,12 @@ export default function LenisProvider() {
     // ---- ease-into-sections engine ----------------------------------------
     const snapTargets = () =>
       Array.from(
-        document.querySelectorAll<HTMLElement>("main section, main header, footer")
+        document.querySelectorAll<HTMLElement>(
+          /* .services-handoff is excluded: it is pinned by its own scrubbed
+             sequence, so easing the page onto it would fight that pin. Verified
+             by wheel pass — see .hermes/plans/services-handoff-v2.md risk 1. */
+          "main section:not(.services-handoff), main header, footer"
+        )
       ).filter(
         (el) => el.parentElement?.classList.contains("page-enter") || el.tagName === "FOOTER"
       );
@@ -119,17 +128,26 @@ export default function LenisProvider() {
     };
     lenis.on("scroll", onScroll as never);
 
-    let raf = 0;
-    const loop = (time: number) => {
-      lenis.raf(time);
-      raf = requestAnimationFrame(loop);
-    };
-    raf = requestAnimationFrame(loop);
+    /* ScrollTrigger and Lenis must share ONE clock. Without this binding
+       ScrollTrigger measures the page against its own idea of the scroll
+       position while Lenis drives the document on a private rAF loop, so
+       pin start/end land in the wrong place and the pin engages only
+       intermittently (measured: held with wheel input, missed entirely
+       with scripted scroll jumps). Both reference implementations —
+       sadeniemela/velox and KaranChandekar/creative-agency-landing — ship
+       this binding; the private rAF below is replaced by gsap.ticker. */
+    lenis.on("scroll", ScrollTrigger.update);
+
+    const tick = (time: number) => lenis.raf(time * 1000);
+    gsap.ticker.add(tick);
+    // keep GSAP's timeline in real time even if a frame takes too long
+    gsap.ticker.lagSmoothing(0);
 
     return () => {
-      cancelAnimationFrame(raf);
+      gsap.ticker.remove(tick);
       clearTimeout(idle);
       lenis.off("scroll", onScroll as never);
+      lenis.off("scroll", ScrollTrigger.update);
       document.removeEventListener("click", onClick);
       window.removeEventListener("wheel", onWheel);
       window.removeEventListener("touchmove", onTouchMove);

@@ -5,3 +5,5 @@ dev.log
 .env*
 *.tsbuildinfo
 next-env.d.ts
+.eslintcache
+.hermes/
