@@ -74,7 +74,7 @@ export default function ServicesPage() {
                         color: "var(--color-mist)",
                       }}
                     >
-                      <Icon width={20} height={20} />
+                      <Icon width={26} height={26} />
                     </span>
                   </Reveal>
                   <Reveal delay={0.05}>

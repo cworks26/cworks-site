@@ -140,7 +140,7 @@ export function ServicesSection() {
                       color: "var(--color-mist)",
                     }}
                   >
-                    <Icon width={20} height={20} />
+                    <Icon width={26} height={26} />
                   </span>
 
                   <span
