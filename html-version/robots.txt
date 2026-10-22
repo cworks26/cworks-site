@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Host: https://cworksug.com
+Sitemap: https://cworksug.com/sitemap.xml

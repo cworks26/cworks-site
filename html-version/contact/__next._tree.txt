@@ -1,0 +1,8 @@
+:HL["/_next/static/chunks/1ggw0ra79t15s.css","style"]
+:HL["/_next/static/media/19087af2bdec32b5-s.p.0schr0lclylgv.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/7ebf22b5a21034f8-s.p.3j3877k49yy0l.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/83afe278b6a6bb3c-s.p.2bn3s6zvc0dyp.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/e41d5df559864f9e-s.p.1g73gv09-xcb6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["https://fonts.googleapis.com/css2?family=Book+Antiqua:ital,wght@0,400;0,700;1,400;1,700&family=Bookman+Old+Style:ital,wght@0,400;0,700;1,400;1,700&display=swap","style"]
+:HL["/logo-mark-dark.png","image"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"contact","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"kLCrt55mrdjjvcLOh2_aG"}

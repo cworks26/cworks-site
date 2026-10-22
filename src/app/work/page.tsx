@@ -77,7 +77,7 @@ export default function WorkPage() {
                   <video
                     className="h-full w-full object-cover"
                     src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/videos/vybent-hero.mp4`}
-                    poster="/videos/vybent-hero.jpg"
+                    poster={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/videos/vybent-hero.jpg`}
                     autoPlay
                     muted
                     loop
@@ -148,6 +148,7 @@ export default function WorkPage() {
             <ScrollStack className="mt-10" itemDistance={56} itemStackDistance={16} stackPosition="12%" itemScale={0.015}>
           <ScrollStackItem key="OAE Inventory & Sales">
             <div className="sys-card">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/images/work/oae.jpg`} alt="OAE Inventory & Sales" />
               <div className="sys-meta">
                 <span className="badge">Inventory & sales system</span>
@@ -158,6 +159,7 @@ export default function WorkPage() {
           </ScrollStackItem>
           <ScrollStackItem key="JL Medical">
             <div className="sys-card">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/images/work/jl-medical.jpg`} alt="JL Medical" />
               <div className="sys-meta">
                 <span className="badge">Clinic management system</span>
@@ -168,6 +170,7 @@ export default function WorkPage() {
           </ScrollStackItem>
           <ScrollStackItem key="School Library System">
             <div className="sys-card">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/images/work/school-library.jpg`} alt="School Library System" />
               <div className="sys-meta">
                 <span className="badge">Library management</span>
@@ -178,6 +181,7 @@ export default function WorkPage() {
           </ScrollStackItem>
           <ScrollStackItem key="School Vote Uganda">
             <div className="sys-card">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/images/work/school-vote.jpg`} alt="School Vote Uganda" />
               <div className="sys-meta">
                 <span className="badge">Digital voting</span>
@@ -255,7 +259,11 @@ export default function WorkPage() {
               .filter((w) => w.media === "link")
               .map((w, i) => (
                 <Reveal key={w.name} delay={i * 0.06}>
-                  <ShippedCard href={w.url ?? "#"} name={w.name} image={w.image}>
+                  <ShippedCard
+                    href={w.url ?? "#"}
+                    name={w.name}
+                    image={w.image ? `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${w.image}` : undefined}
+                  >
                     <div>
                       <div className="flex items-start justify-between gap-4">
                         <span className="badge">{w.kind}</span>

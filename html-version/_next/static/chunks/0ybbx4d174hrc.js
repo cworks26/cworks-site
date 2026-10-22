@@ -1,0 +1,1 @@
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,16868,e=>{"use strict";var t=e.i(43476),s=e.i(71645);e.s(["default",0,function({children:e}){return(0,s.useEffect)(()=>{document.documentElement.classList.add("js")},[]),(0,t.jsx)("div",{className:"page-enter",children:e})}])}]);

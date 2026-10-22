@@ -1,6 +1,5 @@
 "use client";
 
-/* eslint-disable react/no-unknown-property */
 /* Beams — React Bits (reactbits.dev), TS-adapted for CWorks.
    Animated three.js light beams used as a section background.
    Reduced-motion: renders nothing (section keeps its normal background). */

@@ -187,17 +187,11 @@ body {
 .section {
   padding-block: var(--section-gap);
   position: relative;
-  /* Each major section fills the viewport, content vertically centered */
-  min-height: 100vh;
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 .section > .container-cw { width: 100%; }
 
 .section-sm {
-  padding-block: 64px;
+  padding-block: clamp(32px, 4.5vh, 48px);
 }
 
 .rule {
@@ -918,7 +912,7 @@ a.group:hover .spotlight-tile {
 
 /* Footer mega wordmark */
 .footer-wordmark {
-  margin-top: 96px;
+  margin-top: 48px;
   overflow: hidden;
   line-height: 0.78;
   user-select: none;
@@ -1008,7 +1002,7 @@ html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-stopped { overflow: hidden; }
 
 /* --- Fluid scale: everything breathes with the screen --------------- */
-:root { --section-gap: clamp(64px, 12vh, 96px); }
+:root { --section-gap: clamp(48px, 6.5vh, 72px); }
 @media (max-width: 640px) {
   :root { --card-padding: 18px; }
   .container-cw, .container-x { padding-inline: 18px; }
@@ -1155,7 +1149,7 @@ img, video { max-width: 100%; height: auto; }
 .t-body, .t-body-sm { max-width: 68ch; }
 /* Mobile adjustments */
 @media (max-width: 640px) {
-  .section { padding-block: 64px; min-height: 88svh; }
+  .section { padding-block: 44px; }
   .monogram { width: 48px; height: 48px; font-size: 14px; }
   .card { --card-padding: 18px; }
 }
@@ -1223,7 +1217,7 @@ img, video { max-width: 100%; height: auto; }
 
 /* ScrollStack (React Bits) — full-page mode on /work */
 .scroll-stack-window { position: relative; width: 100%; }
-.scroll-stack-inner { padding: 2vh 0 42vh; }
+.scroll-stack-inner { padding: 2vh 0 12vh; }
 .scroll-stack-card {
   transform-origin: top center; will-change: transform;
   backface-visibility: hidden; position: relative; width: 100%;

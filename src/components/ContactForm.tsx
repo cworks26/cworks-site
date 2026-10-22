@@ -12,10 +12,11 @@ import { IconArrowRight, IconCheck } from "./Icons";
    ========================================================================== */
 
 const BUDGETS = [
-  "Under UGX 500,000",
-  "UGX 500,000 – 1,000,000",
-  "UGX 1,000,000 – 3,000,000",
-  "Above UGX 3,000,000",
+  "Under UGX 650,000",
+  "UGX 650,000 – 1,200,000",
+  "UGX 1,200,000 – 1,800,000",
+  "Above UGX 1,800,000",
+  "Custom package — let's quote",
   "Not sure yet",
 ];
 

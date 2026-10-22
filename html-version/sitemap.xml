@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>https://cworksug.com/</loc>
+<lastmod>2026-10-22T17:23:05.518Z</lastmod>
+<changefreq>weekly</changefreq>
+<priority>1</priority>
+</url>
+<url>
+<loc>https://cworksug.com/services/</loc>
+<lastmod>2026-10-22T17:23:05.518Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.9</priority>
+</url>
+<url>
+<loc>https://cworksug.com/work/</loc>
+<lastmod>2026-10-22T17:23:05.518Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://cworksug.com/contact/</loc>
+<lastmod>2026-10-22T17:23:05.518Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://cworksug.com/team/</loc>
+<lastmod>2026-10-22T17:23:05.518Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+</urlset>

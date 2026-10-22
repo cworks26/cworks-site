@@ -17,7 +17,7 @@ export default function PageHead({
   beams?: boolean;
 }) {
   return (
-    <header className="snap-block relative flex min-h-[100svh] flex-col justify-center overflow-hidden pt-[132px] pb-16 md:pt-[168px]">
+    <header className="snap-block relative flex min-h-[60svh] flex-col justify-center overflow-hidden pt-[124px] pb-14 md:pt-[152px] md:pb-20">
       {beams && (
         <BeamsLayer
           beamWidth={2.6}
@@ -34,8 +34,13 @@ export default function PageHead({
       )}
       <div className="grid-lines" aria-hidden />
       <div className="container-cw relative z-10">
+        {eyebrow && (
+          <Reveal>
+            <p className="eyebrow t-label">{eyebrow}</p>
+          </Reveal>
+        )}
         <Reveal delay={0.05}>
-          <h1 className="t-display mt-5 max-w-[20ch]">
+          <h1 className="t-display mt-4 max-w-[20ch]">
           {title.split(" ").map((w, i, arr) =>
             i === arr.length - 1 ? (
               <span key={i} className="serif-accent">
