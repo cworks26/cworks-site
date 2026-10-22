@@ -3,7 +3,7 @@ import site from "@/content/site.json";
 import PageHead from "@/components/PageHead";
 import { Reveal, RevealGroup, RevealItem } from "@/components/Motion";
 import { CTABand } from "@/components/sections";
-import { IconGitHub, IconLinkedIn, IconBlog } from "@/components/Icons";
+import { IconGitHub, IconLinkedIn, IconBlog, IconMail } from "@/components/Icons";
 
 export const metadata: Metadata = {
   title: {
@@ -35,7 +35,7 @@ export default function TeamPage() {
 
       <section className="section" style={{ borderTop: "1px solid var(--hairline)" }}>
         <div className="container-cw">
-          <RevealGroup className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4" stagger={0.05}>
+          <RevealGroup className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" stagger={0.05}>
             {team.map((m) => {
               const initials = m.name
                 .split(" ")
@@ -88,7 +88,28 @@ export default function TeamPage() {
                     ) : null}
                     {m.bio && <p className="t-body-sm mt-4 flex-1">{m.bio}</p>}
 
-                    <div className="mt-6 flex items-center gap-3">
+                    {"email" in m && m.email ? (
+                      <a
+                        href={`mailto:${m.email}`}
+                        className="mt-4 inline-flex items-center gap-2 transition-colors hover:text-[var(--color-paper)]"
+                        style={{ fontSize: 13, color: "var(--color-cwblue)" }}
+                      >
+                        <IconMail width={14} height={14} />
+                        <span>{m.email}</span>
+                      </a>
+                    ) : null}
+
+                    <div className="mt-5 flex items-center gap-3 pt-4" style={{ borderTop: "1px solid var(--hairline)" }}>
+                      {"email" in m && m.email ? (
+                        <a
+                          href={`mailto:${m.email}`}
+                          aria-label={`Email ${m.name}`}
+                          className="transition-colors hover:text-[var(--color-paper)]"
+                          style={{ color: "var(--color-ash)" }}
+                        >
+                          <IconMail width={16} height={16} />
+                        </a>
+                      ) : null}
                       {m.github && (
                         <a
                           href={m.github}

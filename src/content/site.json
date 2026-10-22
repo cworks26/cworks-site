@@ -4,7 +4,7 @@
     "legal": "CWorks Ltd",
     "tagline": "We design, build, and ship digital products for Ugandan businesses.",
     "location": "Kampala, Uganda",
-    "email": "info@cworks.com",
+    "email": "contact@cworksug.com",
     "phone": "+256 788 368 997",
     "whatsapp": "https://wa.me/256788368997",
     "domain": "cworksug.com",
@@ -75,11 +75,11 @@
       "pricing": [
         {
           "tier": "Starter Site",
-          "price": "UGX 350,000",
-          "price_note": "+ UGX 80,000 / month hosting",
+          "price": "UGX 650,000",
+          "price_note": "+ UGX 200,000 / year hosting",
           "desc": "Perfect for individuals and small projects that need a clean, professional online presence without the complexity.",
           "features": [
-            "3 months free hosting included",
+            "1 year free hosting included",
             "Single-page website (up to 5 sections)",
             "Mobile-responsive design",
             "Basic contact form",
@@ -91,11 +91,11 @@
         },
         {
           "tier": "Standard Site",
-          "price": "UGX 750,000",
-          "price_note": "+ UGX 150,000 / month hosting",
+          "price": "UGX 1,200,000",
+          "price_note": "+ UGX 350,000 / year hosting",
           "desc": "For businesses and creators who need a fully custom, multi-page site with proper hosting and a real domain.",
           "features": [
-            "3 months free hosting included",
+            "1 year free hosting included",
             "Multi-page website (up to 5 pages)",
             "Custom design & animations",
             "Mobile-responsive design",
@@ -109,11 +109,11 @@
         },
         {
           "tier": "Super Site",
-          "price": "UGX 1,200,000",
-          "price_note": "+ UGX 250,000 / month hosting",
+          "price": "UGX 1,800,000",
+          "price_note": "+ UGX 500,000 / year hosting",
           "desc": "For complex projects that demand advanced functionality, backend capability, and a fully configured server environment.",
           "features": [
-            "3 months free hosting included",
+            "1 year free hosting included",
             "Unlimited pages",
             "Full custom design from scratch",
             "Advanced animations & interactions",
@@ -436,74 +436,52 @@
   ],
   "team": [
     {
-      "name": "Anwaar Batala",
-      "role": "Developer",
-      "bio": "Turns briefs into working software — comfortable anywhere from the database schema to the deployed build.",
-      "github": "https://github.com/FrostyDot512",
-      "linkedin": "https://www.linkedin.com/in/anwaar-batala-46069a362/",
-      "avatar": "https://avatars.githubusercontent.com/u/214493925?v=4",
-      "meta": "16 repositories on GitHub"
-    },
-    {
-      "name": "Benjamin Ongom",
-      "role": "UI/UX Designer",
-      "bio": "UI/UX designer focused on creating simple, intuitive, and meaningful digital experiences.",
-      "github": "https://github.com/GrandMaster142",
-      "linkedin": "https://www.linkedin.com/in/benjamin-ongom-a2a5672a6/",
-      "avatar": "https://avatars.githubusercontent.com/u/190591835?v=4",
-      "meta": "Fresh on GitHub — portfolio building up"
-    },
-    {
       "name": "Elisha Benjamin Mukisa",
       "role": "Frontend Engineer",
+      "email": "elisha@cworksug.com",
       "bio": "I design and build for the web keeping the experience simple and the visuals stunning.",
       "github": "https://github.com/eliosha",
       "linkedin": "https://www.linkedin.com/in/elisha-mukisa-5b5963402/",
       "avatar": "https://avatars.githubusercontent.com/u/223256913?v=4",
-      "meta": "Runs his own server · 6 repositories",
+      "meta": "Runs his own server — 6 repositories",
       "blog": "https://info.mashcloud.uk"
-    },
-    {
-      "name": "Jonathan Miyingo",
-      "role": "Developer",
-      "bio": "Picks up new frameworks fast and ships the details that make a build feel finished.",
-      "github": "https://github.com/Mrj-1007",
-      "linkedin": "https://www.linkedin.com/in/jonathan-m-a0818a313/",
-      "avatar": "https://avatars.githubusercontent.com/u/236309460?v=4",
-      "meta": "5 repositories on GitHub"
     },
     {
       "name": "Mark Lui",
       "role": "Software Developer & Cloud Architect",
+      "email": "marklui@cworksug.com",
       "bio": "Building custom desktop apps for small businesses, focused on inventory management and automation.",
       "github": "https://github.com/Trojannetwork",
       "linkedin": "https://www.linkedin.com/in/lui-mark-25259339b/",
       "avatar": "https://avatars.githubusercontent.com/u/214070556?v=4",
-      "meta": "BSIT student · 7 repositories"
-    },
-    {
-      "name": "Moses Leo",
-      "role": "Developer",
-      "bio": "Builds with AI in the loop — prototypes fast, then hardens whatever survives real users.",
-      "github": "https://github.com/MOSES-LEO-tech",
-      "linkedin": "https://www.linkedin.com/in/moses-leo-04477a336/",
-      "avatar": "https://avatars.githubusercontent.com/u/221892635?v=4",
-      "meta": "MOMOLILI_TECH · 8 repositories"
+      "meta": "BSIT student — 7 repositories"
     },
     {
       "name": "Otwiine Olweny",
       "role": "Developer",
+      "email": "otwiineolweny@cworksug.com",
       "bio": "Comes from geospatial studies — brings mapping and data thinking to our web work.",
       "github": "https://github.com/Otwiine",
       "linkedin": "https://www.linkedin.com/in/otwiine-olweny-60b871402/",
       "avatar": "https://avatars.githubusercontent.com/u/196969050?v=4",
-      "meta": "Kampala, Uganda · 14 repositories",
+      "meta": "Kampala, Uganda — 14 repositories",
       "blog": "https://otwiine.github.io/GeoPortfolio/",
       "twitter": "https://x.com/Mr_OJO16"
     },
     {
+      "name": "Moses Leo",
+      "role": "Developer",
+      "email": "mosesleo@cworksug.com",
+      "bio": "Builds with AI in the loop — prototypes fast, then hardens whatever survives real users.",
+      "github": "https://github.com/MOSES-LEO-tech",
+      "linkedin": "https://www.linkedin.com/in/moses-leo-04477a336/",
+      "avatar": "https://avatars.githubusercontent.com/u/221892635?v=4",
+      "meta": "MOMOLILI_TECH — 8 repositories"
+    },
+    {
       "name": "Josh Prosper",
       "role": "Team member",
+      "email": "joshprosper@cworksug.com",
       "bio": "Recently joined the roster — profile and links landing soon.",
       "github": "",
       "linkedin": "",
@@ -533,7 +511,7 @@
       "note": "by Elisha Benjamin",
       "media": "link",
       "url": "https://whataboutanime.com/",
-      "image": "/images/work/whatabout-hero.jpg"
+      "image": "/images/whataboutanime.png"
     },
     {
       "name": "Kaizoq",
@@ -542,7 +520,7 @@
       "note": "by Elisha Benjamin",
       "media": "link",
       "url": "https://kaizoq.com/",
-      "image": "/images/work/kaizoq-merch.jpg"
+      "image": "/images/kaizoq.png"
     }
   ],
   "faq": [
@@ -568,7 +546,7 @@
     },
     {
       "q": "What about payment terms?",
-      "a": "50% deposit to begin, balance due on launch. Hosting is free for the first 3 months, then billed monthly via Mobile Money."
+      "a": "50% deposit to begin, balance due on launch. Hosting is free for the first year, then billed annually via Mobile Money."
     }
   ],
   "stats": [
@@ -583,7 +561,7 @@
       "label": "Service lines, end-to-end"
     },
     {
-      "value": 8,
+      "value": 5,
       "suffix": "",
       "label": "People on the team"
     },

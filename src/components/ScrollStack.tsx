@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useRef, useCallback, type ReactNode } from "react";
+import { useEffect, useRef, useCallback, type ReactNode } from "react";
 
 /* ScrollStack — TS-adapted for CWorks.
    Full-page variant: cards pin and stack as the PAGE scrolls.
@@ -57,7 +57,7 @@ const ScrollStack = ({
       return t;
     };
     const pinTop = (parseFloat(stackPosition) / 100) * window.innerHeight;
-    const hold = 0.45 * window.innerHeight; // all cards stay glued this long after the last one arrives
+    const hold = 0.1 * window.innerHeight; // brief hold after the last card arrives
     const tops = cards.map(docTop);
     const caps = tops.map((t, i) => Math.max(0, tops[n - 1] - t - (n - 1 - i) * itemStackDistance) + hold);
     // span_i = scroll distance between card i+1 starting to cover card i and
@@ -93,7 +93,7 @@ const ScrollStack = ({
     }
   }, [itemScale, itemStackDistance]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     cardsRef.current = Array.from(document.querySelectorAll<HTMLElement>(".scroll-stack-card"));
     const cards = cardsRef.current;
     cards.forEach((card, i) => {

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import BeamsLayer from "./BeamsLayer";
 import site from "@/content/site.json";
 import { Reveal, RevealGroup, RevealItem, CountUp } from "./Motion";
 import {
@@ -13,10 +12,9 @@ import {
   IconHouse,
   IconHeart,
 } from "./Icons";
-import { InventoryFrame, DeployFrame } from "./ProductFrame";
-import { Tilt, Magnetic } from "./Interactions";
+import { DeployFrame } from "./ProductFrame";
+import { Magnetic } from "./Interactions";
 import AccordionGallery, { type AccordionItem } from "./AccordionGallery";
-import ServicesHandoff from "./ServicesHandoff";
 
 /* ---------- Trust strip --------------------------------------------------- */
 
@@ -107,9 +105,7 @@ export function SectionHead({
 
 export function ServicesSection() {
   return (
-    <section id="services" className="section services-handoff">
-      {/* the ivory ground the pinned sequence reveals beneath the content */}
-      <div className="services-handoff__ground" aria-hidden />
+    <section id="services" className="section">
       <div className="container-cw">
         <SectionHead
           eyebrow="What we do"
@@ -118,15 +114,14 @@ export function ServicesSection() {
           action={{ href: "/services", label: "All services & pricing" }}
         />
 
-        {/* margin-top is owned by .services-handoff__list (viewport-height scaled) */}
-        <div className="services-handoff__list flex flex-col">
+        <div className="mt-10 flex flex-col">
           {site.services.map((s, i) => {
             const Icon = serviceIcons[s.slug];
             return (
               <Reveal key={s.slug} delay={i * 0.04}>
                 <Link
                   href={`/services#${s.slug}`}
-                  className="spotlight group grid grid-cols-1 gap-6 py-6 md:grid-cols-[64px_1fr_1fr_auto] md:items-center"
+                  className="spotlight group grid grid-cols-1 gap-6 py-5 md:grid-cols-[64px_1fr_1fr_auto] md:items-center"
                   style={{ borderTop: "1px solid var(--hairline)" }}
                 >
                   <span
@@ -176,7 +171,6 @@ export function ServicesSection() {
           <div className="rule" />
         </div>
       </div>
-      <ServicesHandoff sectionId="services" />
     </section>
   );
 }
@@ -202,11 +196,11 @@ export function IndustriesSection() {
           body="Every sector has its own rhythm — stock that moves daily, students enrolling each term, patients queuing. We build for those realities, not for a demo."
         />
 
-        <RevealGroup className="mt-14 grid grid-cols-1 gap-px sm:grid-cols-2 lg:grid-cols-3">
+        <RevealGroup className="mt-10 grid grid-cols-1 gap-px sm:grid-cols-2 lg:grid-cols-3">
           {INDUSTRIES.map((it) => (
             <RevealItem key={it.name}>
               <div
-                className="spotlight flex h-full items-center gap-4 px-6 py-6"
+                className="spotlight flex h-full items-center gap-4 px-6 py-5"
                 style={{ background: "var(--color-carbon)" }}
               >
                 <span style={{ color: "var(--color-fog)" }}>
@@ -234,16 +228,13 @@ export function WorkFeature() {
     "OAE Inventory": "/images/work/oae.jpg",
   };
 
-  /* The panel window is landscape on a laptop, so the two portrait captures
-     are framed on the plate (contain) rather than cropped through the middle.
-     The two landscape captures crop from the left: measured column detail in
-     both assets is near zero through the centre and rich on the left, so a
-     centred crop left the collapsed strip looking empty. */
+  /* All four assets are landscape captures — crop cleanly with cover so every
+     panel fills its frame edge-to-edge without letterboxing bars. */
   const artFit: Record<string, { fit: "cover" | "contain"; position?: string }> = {
     Vybent: { fit: "cover", position: "5% center" },
     "OAE Inventory": { fit: "cover", position: "5% center" },
-    "What About Anime": { fit: "contain" },
-    Kaizoq: { fit: "contain" },
+    "What About Anime": { fit: "cover", position: "center top" },
+    Kaizoq: { fit: "cover", position: "center top" },
   };
 
   const panels: AccordionItem[] = site.work.map((w) => {
@@ -268,7 +259,7 @@ export function WorkFeature() {
           action={{ href: "/work", label: "All work" }}
         />
 
-        <div className="mt-14">
+        <div className="mt-10">
           <AccordionGallery items={panels} />
         </div>
       </div>
@@ -288,7 +279,7 @@ export function ProcessSection() {
           body="No black boxes and no surprise invoices. You see the design before we write code, and you see a preview link before we go live."
         />
 
-        <div className="mt-16 grid grid-cols-1 gap-x-16 gap-y-10 md:grid-cols-2">
+        <div className="mt-10 grid grid-cols-1 gap-x-16 gap-y-8 md:grid-cols-2">
           {site.process.map((p, i) => (
             <Reveal key={p.n} delay={i * 0.03}>
               <div className="flex gap-5">
@@ -316,17 +307,11 @@ export function ProcessSection() {
 /* ---------- Stats --------------------------------------------------------- */
 
 export function StatsSection() {
-  const stats: { to: number; suffix: string; label: string }[] = [
-    { to: 6, suffix: "", label: "Products & platforms shipped" },
-    { to: 5, suffix: "", label: "Service lines, end-to-end" },
-    { to: 8, suffix: "", label: "People on the team" },
-    { to: 100, suffix: "%", label: "Built in Kampala" },
-  ];
   return (
     <section id="stats" className="section-sm" style={{ borderTop: "1px solid var(--hairline)" }}>
       <div className="container-cw">
-        <RevealGroup className="grid grid-cols-2 gap-y-10 lg:grid-cols-4">
-          {stats.map((s) => (
+        <RevealGroup className="grid grid-cols-2 gap-y-8 lg:grid-cols-4">
+          {site.stats.map((s) => (
             <RevealItem key={s.label}>
               <div>
                 <p
@@ -338,9 +323,9 @@ export function StatsSection() {
                     color: "var(--color-paper)",
                   }}
                 >
-                  <CountUp to={s.to} suffix={s.suffix} />
+                  <CountUp to={s.value} suffix={s.suffix} />
                 </p>
-                <p className="t-caption mt-3">{s.label}</p>
+                <p className="t-caption mt-2">{s.label}</p>
               </div>
             </RevealItem>
           ))}

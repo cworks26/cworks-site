@@ -89,7 +89,7 @@ export function DashboardFrame() {
             <div>
               <p style={{ fontSize: 12, color: "var(--color-ash)" }}>Live sales</p>
               <p style={{ fontSize: 15, fontWeight: 510, color: "var(--color-paper)" }}>
-                Kampala Arena · Sat 14 Sep
+                Kampala Arena — Sat 14 Sep
               </p>
             </div>
             <span className="pill">
@@ -167,8 +167,8 @@ export function DashboardFrame() {
           {/* Rows */}
           <div className="mt-3 flex flex-col gap-[6px]">
             {[
-              ["VIP · Table 4", "UGX 1,200,000", "Paid"],
-              ["General · Gate B", "UGX 45,000", "Paid"],
+              ["VIP — Table 4", "UGX 1,200,000", "Paid"],
+              ["General — Gate B", "UGX 45,000", "Paid"],
               ["Early bird", "UGX 30,000", "Pending"],
             ].map((r) => (
               <div
@@ -214,7 +214,7 @@ export function InventoryFrame() {
           <div>
             <p style={{ fontSize: 12, color: "var(--color-ash)" }}>Stock levels</p>
             <p style={{ fontSize: 15, fontWeight: 510, color: "var(--color-paper)" }}>
-              Main store · Kampala
+              Main store — Kampala
             </p>
           </div>
           <span className="pill">Sync 2m ago</span>
@@ -282,7 +282,7 @@ export function DeployFrame() {
       <div className="p-4">
         <p style={{ fontSize: 12, color: "var(--color-ash)" }}>Project pipeline</p>
         <p className="mb-3" style={{ fontSize: 15, fontWeight: 510, color: "var(--color-paper)" }}>
-          Client portal · standard build
+          Client portal — standard build
         </p>
         <div className="flex flex-col gap-[7px]">
           {steps.map(([label, done]) => (

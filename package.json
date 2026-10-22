@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:html": "NEXT_PUBLIC_BASE_PATH='' next build && rm -rf html-version && cp -R out html-version && python3 scripts/make-relative.py",
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src --cache",

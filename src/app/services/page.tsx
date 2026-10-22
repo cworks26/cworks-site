@@ -3,7 +3,7 @@ import Link from "next/link";
 import site from "@/content/site.json";
 import PageHead from "@/components/PageHead";
 import ServiceNav from "@/components/ServiceNav";
-import PinnedDeck from "@/components/PinnedDeck";
+import PinnedDeck, { CustomTierCard } from "@/components/PinnedDeck";
 import { Reveal, RevealGroup, RevealItem } from "@/components/Motion";
 import { CTABand } from "@/components/sections";
 import {
@@ -121,13 +121,13 @@ export default function ServicesPage() {
                   </div>
                 </div>
 
-                {/* Right — pricing deck scrolls through while left holds */}
+                {/* Right — pricing deck + custom builder */}
                 <Reveal delay={0.08}>
                   <div>
-                    <p className="t-label mb-6" >
-                      Pricing
+                    <p className="t-label mb-4">
+                      Pricing &amp; Custom Builder
                     </p>
-                    <PinnedDeck>
+                    <PinnedDeck labels={[...s.pricing.map((p) => p.tier), "Custom"]}>
                       {s.pricing.map((p) => (
                         <div
                           key={p.tier}
@@ -189,6 +189,13 @@ export default function ServicesPage() {
                           </Link>
                         </div>
                       ))}
+                      <CustomTierCard
+                        key="custom-tier"
+                        serviceName={s.name}
+                        tiers={s.pricing}
+                        whatsappUrl={site.brand.whatsapp}
+                        email={site.brand.email}
+                      />
                     </PinnedDeck>
                     <p className="t-label mt-5 flex items-start gap-2">
                       <IconClock width={14} height={14} />

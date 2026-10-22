@@ -27,6 +27,15 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [open]);
+
   // Close the menu when the route changes. Adjusting state during render — rather than
   // in an effect — is React's documented pattern for resetting state when a value
   // changes, and it avoids the cascading render pass an effect would cost.
@@ -51,7 +60,8 @@ export default function Nav() {
           className="flex items-center gap-[10px]"
           style={{ color: "var(--color-paper)" }}
         >
-                    <img src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/logo-mark-dark.png`} alt="" width={38} height={20} style={{ height: 20, width: "auto" }} />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/logo-mark-dark.png`} alt="" width={38} height={20} style={{ height: 20, width: "auto" }} />
           <span
             style={{
               fontSize: 16,
@@ -88,6 +98,8 @@ export default function Nav() {
         <button
           className="nav-trigger"
           onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          aria-controls="mobile-nav"
           aria-label={open ? "Close menu" : "Open menu"}
           style={{ color: "var(--color-paper)", minWidth: 44, minHeight: 44, alignItems: "center", justifyContent: "center" }}
         >
@@ -98,6 +110,7 @@ export default function Nav() {
       <AnimatePresence>
         {open && (
           <motion.div
+            id="mobile-nav"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto", transition: { duration: 0.22, ease: [0.16, 1, 0.3, 1] } }}
             exit={{ opacity: 0, height: 0, transition: { duration: 0.15, ease: [0.3, 0, 0.8, 0.15] } }}

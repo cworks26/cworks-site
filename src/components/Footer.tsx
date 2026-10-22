@@ -15,13 +15,14 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="snap-block flex flex-col justify-between pt-16 pb-6" style={{ borderTop: "1px solid var(--hairline)" }}>
+    <footer className="snap-block flex flex-col justify-between pt-12 pb-6" style={{ borderTop: "1px solid var(--hairline)" }}>
       <div className="container-cw">
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-[10px]" style={{ color: "var(--color-paper)" }}>
-                            <img src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/logo-mark-dark.png`} alt="" width={24} height={13} style={{ height: 13, width: "auto" }} />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/logo-mark-dark.png`} alt="" width={24} height={13} style={{ height: 13, width: "auto" }} />
               <span style={{ fontSize: 16, fontWeight: 510, letterSpacing: "-0.011em" }}>
                 CWorks
               </span>
@@ -63,7 +64,7 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <p className="t-label mb-4" style={{ textTransform: "uppercase", letterSpacing: "0.08em" }}>
+            <p className="t-label mb-4">
               Services
             </p>
             <ul className="flex flex-col gap-3">
@@ -82,7 +83,7 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <p className="t-label mb-4" style={{ textTransform: "uppercase", letterSpacing: "0.08em" }}>
+            <p className="t-label mb-4">
               Company
             </p>
             <ul className="flex flex-col gap-3">
@@ -111,7 +112,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <p className="t-label mb-4" style={{ textTransform: "uppercase", letterSpacing: "0.08em" }}>
+            <p className="t-label mb-4">
               Get in touch
             </p>
             <ul className="flex flex-col gap-3">
@@ -158,11 +159,11 @@ export default function Footer() {
           <span className="footer-wordmark-text">CWorks</span>
         </div>
 
-        <div className="rule my-12" />
+        <div className="rule my-8" />
 
         <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
           <p className="t-label">
-            © {year} {brand.legal} · {brand.domain}
+            © {year} {brand.legal} — {brand.domain}
           </p>
           <p className="t-label">
             Built in Kampala, Uganda 🇺🇬
